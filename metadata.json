@@ -1,0 +1,6 @@
+{
+  "name": "Sri Sai Rama Stationary",
+  "description": "Modern web application and digital services portal for Sri Sai Rama Stationary in Dammaiguda, Hyderabad.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
