@@ -19,6 +19,7 @@ import {
   AlertCircle
 } from 'lucide-react';
 import { businessInfo, getWhatsAppLink } from '../data/storeData';
+import { STORE_SYSTEM_INSTRUCTION, getLocalKnowledgeResponse } from '../data/chatKnowledge';
 import { ChatMessage } from '../types';
 
 const SUGGESTED_QUESTIONS = [
@@ -76,37 +77,73 @@ export const AIChatbotSection: React.FC = () => {
           text: m.text
         }));
 
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: textToSend,
-          history: historyPayload
-        })
-      });
+      let replyText = '';
 
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
+      try {
+        const response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            message: textToSend,
+            history: historyPayload
+          })
+        });
+
+        if (response.ok) {
+          const data = await response.json();
+          if (data.text) {
+            replyText = data.text;
+          }
+        }
+      } catch (fetchErr) {
+        console.warn('Backend API unreachable, trying client fallback:', fetchErr);
       }
 
-      const data = await response.json();
+      // If backend API returned no reply (e.g. key missing on backend or Vercel static route)
+      if (!replyText) {
+        const clientApiKey = import.meta.env.VITE_GEMINI_API_KEY;
+        if (clientApiKey) {
+          try {
+            const { GoogleGenAI } = await import('@google/genai');
+            const ai = new GoogleGenAI({ apiKey: clientApiKey });
+            const chat = ai.chats.create({
+              model: 'gemini-3.6-flash',
+              config: {
+                systemInstruction: STORE_SYSTEM_INSTRUCTION,
+                temperature: 0.7,
+              },
+            });
+            const res = await chat.sendMessage({ message: textToSend });
+            if (res.text) {
+              replyText = res.text;
+            }
+          } catch (genErr) {
+            console.warn('Client-side Gemini call failed:', genErr);
+          }
+        }
+      }
+
+      // Fallback to local store knowledge base engine
+      if (!replyText) {
+        replyText = getLocalKnowledgeResponse(textToSend);
+      }
 
       const assistantMessage: ChatMessage = {
         id: `assistant-${Date.now()}`,
         sender: 'assistant',
-        text: data.text || "I'm sorry, I couldn't fetch a reply right now. Please call or WhatsApp us at +91 9866094840.",
+        text: replyText,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
 
       setMessages((prev) => [...prev, assistantMessage]);
     } catch (err: any) {
       console.error('Chat error:', err);
+      const fallbackReply = getLocalKnowledgeResponse(textToSend);
       const errorMessage: ChatMessage = {
         id: `error-${Date.now()}`,
         sender: 'assistant',
-        text: `I'm having trouble connecting to our server right now. You can reach our team directly at **+91 9866094840** or on **WhatsApp** for instant support!`,
-        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-        isError: true
+        text: fallbackReply,
+        timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })
       };
       setMessages((prev) => [...prev, errorMessage]);
     } finally {
