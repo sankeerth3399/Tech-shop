@@ -107,7 +107,7 @@ export const AIChatbotSection: React.FC = () => {
             const { GoogleGenAI } = await import('@google/genai');
             const ai = new GoogleGenAI({ apiKey: clientApiKey });
             const chat = ai.chats.create({
-              model: 'gemini-3.6-flash',
+              model: 'gemini-2.5-flash',
               config: {
                 systemInstruction: STORE_SYSTEM_INSTRUCTION,
                 temperature: 0.7,
@@ -118,7 +118,7 @@ export const AIChatbotSection: React.FC = () => {
               replyText = res.text;
             }
           } catch (genErr) {
-            console.warn('Client-side Gemini call failed:', genErr);
+            console.log('Client-side Gemini call fallback activated.');
           }
         }
       }

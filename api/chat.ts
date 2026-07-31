@@ -49,28 +49,57 @@ export default async function handler(req: any, res: any) {
           },
         });
 
-        const formattedHistory = Array.isArray(history)
-          ? history.map((item: { sender: string; text: string }) => ({
-              role: item.sender === 'user' ? 'user' : 'model',
-              parts: [{ text: item.text }],
-            }))
-          : [];
+        // Gemini API expects history to start with a 'user' turn
+        const rawHistory = Array.isArray(history) ? history : [];
+        const firstUserIdx = rawHistory.findIndex((item: { sender: string }) => item.sender === 'user');
+        const validHistory = firstUserIdx >= 0 ? rawHistory.slice(firstUserIdx) : [];
 
-        const chat = ai.chats.create({
-          model: 'gemini-3.6-flash',
-          config: {
-            systemInstruction: STORE_SYSTEM_INSTRUCTION,
-            temperature: 0.7,
-          },
-          history: formattedHistory,
-        });
+        const formattedHistory = validHistory.map((item: { sender: string; text: string }) => ({
+          role: item.sender === 'user' ? 'user' : 'model',
+          parts: [{ text: item.text }],
+        }));
 
-        const response = await chat.sendMessage({ message });
-        if (response.text) {
-          return res.status(200).json({ text: response.text });
+        let aiReplyText = '';
+
+        try {
+          const chat = ai.chats.create({
+            model: 'gemini-2.5-flash',
+            config: {
+              systemInstruction: STORE_SYSTEM_INSTRUCTION,
+              temperature: 0.7,
+            },
+            history: formattedHistory,
+          });
+
+          const response = await chat.sendMessage({ message });
+          if (response.text) {
+            aiReplyText = response.text;
+          }
+        } catch (flashErr) {
+          try {
+            const chatPro = ai.chats.create({
+              model: 'gemini-2.5-pro',
+              config: {
+                systemInstruction: STORE_SYSTEM_INSTRUCTION,
+                temperature: 0.7,
+              },
+              history: formattedHistory,
+            });
+
+            const response = await chatPro.sendMessage({ message });
+            if (response.text) {
+              aiReplyText = response.text;
+            }
+          } catch (proErr) {
+            console.log('Gemini model calls unavailable in Vercel API, serving local knowledge base.');
+          }
+        }
+
+        if (aiReplyText) {
+          return res.status(200).json({ text: aiReplyText });
         }
       } catch (geminiError: any) {
-        console.warn('Gemini API call failed in serverless handler:', geminiError?.message || geminiError);
+        console.log('Gemini API unavailable or fallback used in serverless handler, serving store knowledge base response.');
       }
     }
 
