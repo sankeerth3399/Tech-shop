@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, Phone, X, Send } from 'lucide-react';
-import { motion } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { businessInfo, getWhatsAppLink } from '../data/storeData';
 
 export const FloatingWhatsApp: React.FC = () => {
@@ -108,9 +108,16 @@ export const FloatingWhatsApp: React.FC = () => {
   return (
     <>
       {/* WhatsApp Chat Popup */}
-      {popupOpen && (
-        <div className="fixed bottom-24 right-4 sm:right-6 z-50 w-80 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden animate-in zoom-in-95 duration-200">
-          <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-4 text-white flex items-center justify-between">
+      <AnimatePresence>
+        {popupOpen && (
+          <motion.div
+            initial={{ opacity: 0, scale: 0.88, y: 16 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.9, y: 12 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+            className="fixed bottom-24 right-4 sm:right-6 z-50 w-80 bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden origin-bottom-right"
+          >
+            <div className="bg-gradient-to-r from-emerald-600 to-teal-600 p-4 text-white flex items-center justify-between">
             <div className="flex items-center gap-2.5">
               <div className="w-9 h-9 rounded-full bg-white/20 flex items-center justify-center">
                 <MessageSquare className="w-5 h-5 text-white" />
@@ -203,8 +210,9 @@ export const FloatingWhatsApp: React.FC = () => {
               <span>Start WhatsApp Chat</span>
             </motion.a>
           </div>
-        </div>
+        </motion.div>
       )}
+      </AnimatePresence>
 
       {/* Floating Action Button (Desktop & Tablet) */}
       <div className="fixed bottom-6 right-6 z-40 hidden sm:flex items-center gap-2">

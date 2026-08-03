@@ -8,7 +8,7 @@ export const ProductsSection: React.FC = () => {
   const [selectedProduct, setSelectedProduct] = useState<ProductItem | null>(null);
 
   return (
-    <section id="products" className="py-20 bg-transparent relative border-t border-slate-200/50 dark:border-slate-800/60">
+    <section id="products" className="py-20 bg-gradient-to-b from-orange-100/40 via-amber-50/30 to-pink-100/40 dark:from-slate-950/80 dark:via-amber-950/20 dark:to-slate-950/80 relative border-t border-amber-200/50 dark:border-amber-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -42,7 +42,7 @@ export const ProductsSection: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.15 }}
                 transition={{ duration: 0.5, delay: (idx % 4) * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
-                className="bg-slate-50 dark:bg-slate-900 rounded-2xl border border-slate-200/80 dark:border-slate-800 overflow-hidden shadow-xs hover:shadow-xl hover:border-orange-400/50 dark:hover:border-orange-500/50 transition-all duration-300 flex flex-col justify-between group"
+                className="bg-gradient-to-b from-white via-amber-50/50 to-orange-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/40 rounded-2xl border border-amber-200/70 dark:border-amber-900/60 overflow-hidden shadow-md hover:shadow-2xl hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-300 flex flex-col justify-between group"
               >
                 <div>
                   {/* Image Container */}
@@ -61,7 +61,7 @@ export const ProductsSection: React.FC = () => {
 
                   {/* Body Content */}
                   <div className="p-5">
-                    <span className="text-[11px] font-semibold text-blue-600 dark:text-blue-400 uppercase tracking-wider block mb-1">
+                    <span className="text-[11px] font-extrabold uppercase tracking-wider inline-block px-2.5 py-0.5 rounded-md mb-2 bg-gradient-to-r from-orange-500/10 to-amber-500/10 text-orange-600 dark:text-orange-400 border border-orange-200/80 dark:border-orange-800/60">
                       {product.category}
                     </span>
                     <h3 className="text-base font-bold text-slate-900 dark:text-white mb-1.5 line-clamp-1 group-hover:text-orange-500 transition-colors">

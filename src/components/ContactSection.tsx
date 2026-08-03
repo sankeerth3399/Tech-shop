@@ -26,7 +26,7 @@ Notes: ${formData.notes || 'N/A'}`;
   };
 
   return (
-    <section id="contact" className="py-20 bg-transparent relative border-t border-slate-200/50 dark:border-slate-800/60">
+    <section id="contact" className="py-20 bg-gradient-to-b from-blue-100/40 via-emerald-50/30 to-teal-100/40 dark:from-slate-950/80 dark:via-emerald-950/20 dark:to-slate-950/80 relative border-t border-emerald-200/50 dark:border-emerald-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
@@ -59,7 +59,7 @@ Notes: ${formData.notes || 'N/A'}`;
             className="lg:col-span-5 space-y-6"
           >
             {/* Info Cards */}
-            <div className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 space-y-6">
+            <div className="bg-gradient-to-br from-white via-emerald-50/50 to-teal-50/40 dark:from-slate-900 dark:to-emerald-950/40 rounded-3xl p-6 border border-emerald-200/70 dark:border-emerald-900/60 shadow-lg space-y-6">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white pb-3 border-b border-slate-200 dark:border-slate-800">
                 Contact Details
               </h3>
@@ -175,7 +175,7 @@ Notes: ${formData.notes || 'N/A'}`;
             className="lg:col-span-7 space-y-6"
           >
             {/* Quick Order Form */}
-            <div className="bg-slate-50 dark:bg-slate-900 rounded-3xl p-6 sm:p-8 border border-slate-200/80 dark:border-slate-800">
+            <div className="bg-gradient-to-br from-white via-blue-50/50 to-indigo-50/40 dark:from-slate-900 dark:to-indigo-950/40 rounded-3xl p-6 sm:p-8 border border-blue-200/70 dark:border-indigo-900/60 shadow-lg">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-2">
                 Quick Service & Order Request
               </h3>

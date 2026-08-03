@@ -30,7 +30,7 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-white/30 dark:bg-slate-900/30 backdrop-blur-xs relative border-t border-slate-200/60 dark:border-slate-800">
+    <section id="about" className="py-20 bg-gradient-to-b from-purple-100/40 via-indigo-50/30 to-blue-100/40 dark:from-slate-950/80 dark:via-purple-950/20 dark:to-slate-950/80 backdrop-blur-xs relative border-t border-purple-200/50 dark:border-purple-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -95,12 +95,12 @@ export const AboutSection: React.FC = () => {
               {values.map((val, idx) => {
                 const IconComp = val.icon;
                 return (
-                  <div key={idx} className="bg-white dark:bg-slate-800 p-4 rounded-2xl border border-slate-200/80 dark:border-slate-700 space-y-2">
-                    <div className="w-8 h-8 rounded-xl bg-blue-50 dark:bg-blue-950 flex items-center justify-center text-blue-600 dark:text-blue-400">
+                  <div key={idx} className="bg-gradient-to-br from-white via-indigo-50/60 to-purple-50/40 dark:from-slate-900 dark:to-indigo-950/50 p-4 rounded-2xl border border-indigo-200/70 dark:border-indigo-900/60 space-y-2 shadow-sm">
+                    <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 flex items-center justify-center text-indigo-600 dark:text-indigo-300">
                       <IconComp className="w-4 h-4" />
                     </div>
                     <h4 className="text-sm font-bold text-slate-900 dark:text-white">{val.title}</h4>
-                    <p className="text-xs text-slate-500 dark:text-slate-400">{val.description}</p>
+                    <p className="text-xs text-slate-600 dark:text-slate-300">{val.description}</p>
                   </div>
                 );
               })}

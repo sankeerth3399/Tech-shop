@@ -40,25 +40,29 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
       title: 'Xerox & Print',
       desc: 'B&W / HD Color printing & scanning',
       icon: Printer,
-      color: 'bg-blue-50 text-blue-600 dark:bg-blue-950/80 dark:text-blue-400',
+      color: 'bg-blue-100/80 text-blue-700 dark:bg-blue-950/90 dark:text-blue-300',
+      cardBg: 'bg-gradient-to-br from-white via-blue-50/80 to-indigo-50/60 dark:from-slate-900/90 dark:to-indigo-950/70 border-blue-200 dark:border-indigo-900/70 shadow-md',
     },
     {
       title: 'Aadhar / PAN',
       desc: 'Fast application & portal edits',
       icon: CreditCard,
-      color: 'bg-orange-50 text-orange-500 dark:bg-orange-950/80 dark:text-orange-400',
+      color: 'bg-orange-100/80 text-orange-700 dark:bg-orange-950/90 dark:text-orange-300',
+      cardBg: 'bg-gradient-to-br from-white via-orange-50/80 to-amber-50/60 dark:from-slate-900/90 dark:to-amber-950/70 border-orange-200 dark:border-amber-900/70 shadow-md',
     },
     {
       title: 'Office Supplies',
       desc: 'Notebooks, files & reams',
       icon: FileText,
-      color: 'bg-indigo-50 text-indigo-600 dark:bg-indigo-950/80 dark:text-indigo-400',
+      color: 'bg-purple-100/80 text-purple-700 dark:bg-purple-950/90 dark:text-purple-300',
+      cardBg: 'bg-gradient-to-br from-white via-purple-50/80 to-indigo-50/60 dark:from-slate-900/90 dark:to-purple-950/70 border-purple-200 dark:border-purple-900/70 shadow-md',
     },
     {
       title: 'Passport Photos',
       desc: 'Instant studio print in 5 mins',
       icon: Camera,
-      color: 'bg-emerald-50 text-emerald-600 dark:bg-emerald-950/80 dark:text-emerald-400',
+      color: 'bg-emerald-100/80 text-emerald-700 dark:bg-emerald-950/90 dark:text-emerald-300',
+      cardBg: 'bg-gradient-to-br from-white via-emerald-50/80 to-teal-50/60 dark:from-slate-900/90 dark:to-teal-950/70 border-emerald-200 dark:border-emerald-900/70 shadow-md',
     },
   ];
 
@@ -68,9 +72,10 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
   return (
     <section id="hero" className="relative pt-24 pb-12 md:pt-32 md:pb-20 bg-transparent text-slate-900 dark:text-slate-100 overflow-hidden">
       
-      {/* Background Decorative Soft Gradients */}
-      <div className="absolute top-0 right-1/4 w-[30rem] h-[30rem] bg-blue-500/10 dark:bg-blue-600/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
-      <div className="absolute bottom-10 left-10 w-[24rem] h-[24rem] bg-amber-500/10 dark:bg-amber-600/20 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Decorative Soft Vibrant Gradients */}
+      <div className="absolute top-0 right-1/4 w-[36rem] h-[36rem] bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
+      <div className="absolute bottom-10 left-10 w-[30rem] h-[30rem] bg-gradient-to-tr from-amber-500/20 via-orange-500/20 to-rose-500/20 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-10 w-[24rem] h-[24rem] bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
         
@@ -142,7 +147,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="lg:col-span-7 bg-white dark:bg-slate-900 rounded-3xl p-8 sm:p-10 border border-slate-200/80 dark:border-slate-800 shadow-sm flex flex-col justify-between relative overflow-hidden"
+            className="lg:col-span-7 bg-gradient-to-br from-white/95 via-blue-50/70 to-indigo-50/80 dark:from-slate-900/90 dark:via-indigo-950/50 dark:to-slate-900/90 text-slate-900 dark:text-slate-100 rounded-3xl p-8 sm:p-10 border border-blue-200/80 dark:border-indigo-800/60 shadow-xl flex flex-col justify-between relative overflow-hidden backdrop-blur-md"
           >
             <div className="absolute top-0 right-0 p-8 opacity-5 dark:opacity-10 pointer-events-none">
               <Sparkles className="w-48 h-48 text-blue-600" />
@@ -168,7 +173,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
               {/* Main Headline */}
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight leading-[1.12] text-slate-900 dark:text-white">
                 Premium Quality <br className="hidden sm:inline" />
-                <span className="bg-gradient-to-r from-blue-600 via-blue-500 to-blue-400 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-amber-500 bg-clip-text text-transparent">
                   Stationery & Digital Services.
                 </span>
               </h1>
@@ -265,7 +270,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
               return (
                 <div
                   key={idx}
-                  className="bg-white dark:bg-slate-900 rounded-3xl p-6 border border-slate-200/80 dark:border-slate-800 shadow-xs flex flex-col justify-between hover:border-blue-300 dark:hover:border-blue-800 transition-all group"
+                  className={`${svc.cardBg} rounded-3xl p-6 flex flex-col justify-between hover:scale-[1.02] transition-all duration-300 group`}
                 >
                   <div>
                     <div className={`w-11 h-11 rounded-2xl flex items-center justify-center mb-4 ${svc.color}`}>

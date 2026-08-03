@@ -60,7 +60,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, activeSection }) =
             className="flex items-center gap-2.5 sm:gap-3 group"
           >
             <div
-              className={`rounded-xl bg-gradient-to-tr from-blue-600 via-blue-500 to-amber-500 p-0.5 shadow-md group-hover:scale-105 transition-all duration-300 ${
+              className={`rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-500 to-amber-500 p-0.5 shadow-md group-hover:scale-105 transition-all duration-300 ${
                 isScrolled ? 'w-8 h-8 sm:w-9 sm:h-9' : 'w-9 h-9 sm:w-10 sm:h-10'
               }`}
             >
@@ -74,12 +74,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, activeSection }) =
             </div>
             <div>
               <span
-                className={`font-bold tracking-tight text-slate-900 dark:text-white flex items-center gap-1.5 transition-all duration-300 ${
+                className={`font-extrabold tracking-tight bg-gradient-to-r from-blue-700 via-indigo-600 to-amber-600 dark:from-blue-400 dark:via-indigo-300 dark:to-amber-400 bg-clip-text text-transparent flex items-center gap-1.5 transition-all duration-300 ${
                   isScrolled ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'
                 }`}
               >
                 Sri Sai Rama
-                <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-600 dark:text-orange-400 font-semibold border border-orange-200 dark:border-orange-800/50">
+                <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold shadow-xs">
                   Stationary
                 </span>
               </span>

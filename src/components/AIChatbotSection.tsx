@@ -213,7 +213,7 @@ export const AIChatbotSection: React.FC = () => {
   };
 
   return (
-    <section id="ai-chat" className="py-16 sm:py-24 bg-white/40 dark:bg-slate-900/40 backdrop-blur-xs relative border-t border-slate-200/60 dark:border-slate-800/80 transition-colors duration-300">
+    <section id="ai-chat" className="py-16 sm:py-24 bg-gradient-to-b from-blue-100/40 via-indigo-50/30 to-amber-100/40 dark:from-slate-950/80 dark:via-indigo-950/20 dark:to-slate-950/80 backdrop-blur-xs relative border-t border-indigo-200/50 dark:border-indigo-900/50 transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
@@ -246,10 +246,10 @@ export const AIChatbotSection: React.FC = () => {
         >
           
           {/* Chat Header Bar */}
-          <div className="px-5 py-4 bg-slate-900 text-white flex items-center justify-between border-b border-slate-800">
+          <div className="px-5 py-4 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white flex items-center justify-between border-b border-indigo-900/60">
             <div className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 to-amber-400 p-0.5 flex items-center justify-center shadow-md">
+                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 via-indigo-500 to-amber-400 p-0.5 flex items-center justify-center shadow-md">
                   <div className="w-full h-full bg-slate-900 rounded-[10px] flex items-center justify-center">
                     <Bot className="w-5 h-5 text-blue-400" />
                   </div>
@@ -258,12 +258,12 @@ export const AIChatbotSection: React.FC = () => {
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <h3 className="font-bold text-sm text-white">Sri Assistant</h3>
-                  <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-blue-500/20 text-blue-300 border border-blue-400/30">
+                  <h3 className="font-bold text-sm text-white">Sri AI Assistant</h3>
+                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 text-blue-300 border border-blue-400/30">
                     Gemini AI
                   </span>
                 </div>
-                <p className="text-xs text-slate-400 flex items-center gap-1.5 mt-0.5">
+                <p className="text-xs text-slate-300 flex items-center gap-1.5 mt-0.5">
                   <span className="inline-block w-1.5 h-1.5 bg-emerald-400 rounded-full animate-ping" />
                   Online • Sri Sai Rama Support
                 </p>

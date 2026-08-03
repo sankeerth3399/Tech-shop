@@ -38,23 +38,27 @@
   scrollbar-width: none;
 }
 
-/* Custom ambient mesh background and subtle grid texture */
+/* Custom ambient colorful mesh background and vibrant textures */
 .bg-mesh-gradient {
-  background-color: #f8fafc;
+  background-color: #f4f6ff;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.08) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.06) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(14, 165, 233, 0.07) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.18) 0px, transparent 55%),
+    radial-gradient(at 100% 0%, rgba(245, 158, 11, 0.18) 0px, transparent 55%),
+    radial-gradient(at 100% 50%, rgba(236, 72, 153, 0.15) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(16, 185, 129, 0.16) 0px, transparent 55%),
+    radial-gradient(at 0% 100%, rgba(139, 92, 246, 0.18) 0px, transparent 55%);
+  background-attachment: fixed;
 }
 
 .dark .bg-mesh-gradient {
-  background-color: #020617;
+  background-color: #070d1e;
   background-image: 
-    radial-gradient(at 0% 0%, rgba(30, 58, 138, 0.25) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(180, 83, 9, 0.2) 0px, transparent 50%),
-    radial-gradient(at 100% 100%, rgba(67, 56, 202, 0.2) 0px, transparent 50%),
-    radial-gradient(at 0% 100%, rgba(3, 105, 161, 0.2) 0px, transparent 50%);
+    radial-gradient(at 0% 0%, rgba(30, 64, 175, 0.45) 0px, transparent 55%),
+    radial-gradient(at 100% 0%, rgba(217, 119, 6, 0.35) 0px, transparent 55%),
+    radial-gradient(at 100% 50%, rgba(190, 24, 93, 0.35) 0px, transparent 50%),
+    radial-gradient(at 50% 100%, rgba(4, 120, 87, 0.35) 0px, transparent 55%),
+    radial-gradient(at 0% 100%, rgba(109, 40, 217, 0.45) 0px, transparent 55%);
+  background-attachment: fixed;
 }
 
 .bg-dot-pattern {
