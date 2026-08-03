@@ -1,9 +1,58 @@
-import React, { useState } from 'react';
-import { MessageSquare, Phone, X, Sparkles, Send } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { MessageSquare, Phone, X, Send } from 'lucide-react';
 import { businessInfo, getWhatsAppLink } from '../data/storeData';
 
 export const FloatingWhatsApp: React.FC = () => {
   const [popupOpen, setPopupOpen] = useState(false);
+  const playedSoundRef = useRef(false);
+
+  const playChime = () => {
+    try {
+      const AudioCtx = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+      if (!AudioCtx) return;
+
+      const ctx = new AudioCtx();
+      if (ctx.state === 'suspended') {
+        ctx.resume();
+      }
+
+      const now = ctx.currentTime;
+
+      // First crisp tone (A5 note ~880Hz)
+      const osc1 = ctx.createOscillator();
+      const gain1 = ctx.createGain();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(880, now);
+      gain1.gain.setValueAtTime(0.06, now);
+      gain1.gain.exponentialRampToValueAtTime(0.0001, now + 0.12);
+      osc1.connect(gain1);
+      gain1.connect(ctx.destination);
+      osc1.start(now);
+      osc1.stop(now + 0.12);
+
+      // Second crisp tone (D6 note ~1174Hz)
+      const osc2 = ctx.createOscillator();
+      const gain2 = ctx.createGain();
+      osc2.type = 'sine';
+      osc2.frequency.setValueAtTime(1174.66, now + 0.07);
+      gain2.gain.setValueAtTime(0.06, now + 0.07);
+      gain2.gain.exponentialRampToValueAtTime(0.0001, now + 0.25);
+      osc2.connect(gain2);
+      gain2.connect(ctx.destination);
+      osc2.start(now + 0.07);
+      osc2.stop(now + 0.25);
+    } catch {
+      // AudioContext policy catch
+    }
+  };
+
+  const handleTogglePopup = () => {
+    if (!popupOpen && !playedSoundRef.current) {
+      playChime();
+      playedSoundRef.current = true;
+    }
+    setPopupOpen(!popupOpen);
+  };
 
   return (
     <>
@@ -17,9 +66,18 @@ export const FloatingWhatsApp: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-sm font-bold">Sri Sai Rama Stationary</h4>
-                <p className="text-[10px] text-emerald-100 flex items-center gap-1">
+                <p className="text-[10px] text-emerald-100 flex items-center gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
-                  <span>Online • Dammaiguda Desk</span>
+                  <span>Online</span>
+                  <span className="text-emerald-200/50">•</span>
+                  <span className="inline-flex items-center gap-1 font-medium text-emerald-100/90">
+                    <span>typing</span>
+                    <span className="inline-flex gap-0.5 items-center">
+                      <span className="w-1 h-1 rounded-full bg-emerald-200 animate-bounce [animation-delay:-0.3s]" />
+                      <span className="w-1 h-1 rounded-full bg-emerald-200 animate-bounce [animation-delay:-0.15s]" />
+                      <span className="w-1 h-1 rounded-full bg-emerald-200 animate-bounce" />
+                    </span>
+                  </span>
                 </p>
               </div>
             </div>
@@ -52,7 +110,7 @@ export const FloatingWhatsApp: React.FC = () => {
       {/* Floating Action Button (Desktop & Tablet) */}
       <div className="fixed bottom-6 right-6 z-40 hidden sm:flex items-center gap-2">
         <button
-          onClick={() => setPopupOpen(!popupOpen)}
+          onClick={handleTogglePopup}
           className="relative group p-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl shadow-emerald-500/30 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center"
           aria-label="Chat on WhatsApp"
         >
