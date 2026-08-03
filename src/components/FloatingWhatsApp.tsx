@@ -1,10 +1,61 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { MessageSquare, Phone, X, Send } from 'lucide-react';
+import { motion } from 'motion/react';
 import { businessInfo, getWhatsAppLink } from '../data/storeData';
 
 export const FloatingWhatsApp: React.FC = () => {
   const [popupOpen, setPopupOpen] = useState(false);
+  const [isTyping, setIsTyping] = useState(true);
   const playedSoundRef = useRef(false);
+
+  useEffect(() => {
+    if (!popupOpen) return;
+
+    let timeoutId: NodeJS.Timeout;
+
+    const scheduleNextToggle = () => {
+      // If currently typing, keep typing for 2.5s - 4.5s, then pause.
+      // If not typing, stay idle for 3.5s - 6s, then start typing again.
+      const delay = isTyping
+        ? Math.floor(Math.random() * 2000) + 2500
+        : Math.floor(Math.random() * 2500) + 3500;
+
+      timeoutId = setTimeout(() => {
+        setIsTyping((prev) => !prev);
+      }, delay);
+    };
+
+    scheduleNextToggle();
+
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [popupOpen, isTyping]);
+
+  // Auto-close popup after 60 seconds of inactivity and reset chime sound ref
+  useEffect(() => {
+    if (!popupOpen) return;
+
+    let inactivityTimer: NodeJS.Timeout;
+
+    const resetInactivityTimer = () => {
+      clearTimeout(inactivityTimer);
+      inactivityTimer = setTimeout(() => {
+        setPopupOpen(false);
+        playedSoundRef.current = false;
+      }, 60000);
+    };
+
+    resetInactivityTimer();
+
+    const activityEvents = ['mousemove', 'keydown', 'click', 'scroll', 'touchstart'];
+    activityEvents.forEach((evt) => window.addEventListener(evt, resetInactivityTimer));
+
+    return () => {
+      clearTimeout(inactivityTimer);
+      activityEvents.forEach((evt) => window.removeEventListener(evt, resetInactivityTimer));
+    };
+  }, [popupOpen]);
 
   const playChime = () => {
     try {
@@ -66,18 +117,24 @@ export const FloatingWhatsApp: React.FC = () => {
               </div>
               <div>
                 <h4 className="text-sm font-bold">Sri Sai Rama Stationary</h4>
-                <p className="text-[10px] text-emerald-100 flex items-center gap-1.5">
+                <p className="text-[10px] text-emerald-100 flex items-center gap-1.5 min-h-[16px]">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
                   <span>Online</span>
                   <span className="text-emerald-200/50">•</span>
-                  <span className="inline-flex items-center gap-1 font-medium text-emerald-100/90">
-                    <span>typing</span>
-                    <span className="inline-flex gap-0.5 items-center">
-                      <span className="w-1 h-1 rounded-full bg-emerald-200 animate-bounce [animation-delay:-0.3s]" />
-                      <span className="w-1 h-1 rounded-full bg-emerald-200 animate-bounce [animation-delay:-0.15s]" />
-                      <span className="w-1 h-1 rounded-full bg-emerald-200 animate-bounce" />
+                  {isTyping ? (
+                    <span className="inline-flex items-center gap-1 font-medium text-emerald-100/90 transition-all duration-300">
+                      <span>typing</span>
+                      <span className="inline-flex gap-0.5 items-center">
+                        <span className="w-1 h-1 rounded-full bg-emerald-200 animate-bounce [animation-delay:-0.3s]" />
+                        <span className="w-1 h-1 rounded-full bg-emerald-200 animate-bounce [animation-delay:-0.15s]" />
+                        <span className="w-1 h-1 rounded-full bg-emerald-200 animate-bounce" />
+                      </span>
                     </span>
-                  </span>
+                  ) : (
+                    <span className="font-medium text-emerald-100/90 transition-all duration-300">
+                      Dammaiguda Desk
+                    </span>
+                  )}
                 </p>
               </div>
             </div>
@@ -90,11 +147,53 @@ export const FloatingWhatsApp: React.FC = () => {
           </div>
 
           <div className="p-4 space-y-3 bg-slate-50 dark:bg-slate-950/50">
-            <div className="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200 shadow-xs">
+            <motion.div
+              initial={{ opacity: 0, y: 14, scale: 0.96 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.35, delay: 0.12, ease: [0.21, 0.47, 0.32, 0.98] }}
+              className="bg-white dark:bg-slate-800 p-3.5 rounded-2xl border border-slate-200/80 dark:border-slate-700 text-xs text-slate-700 dark:text-slate-200 shadow-xs relative"
+            >
+              <div className="flex items-center justify-between text-[10px] text-slate-400 dark:text-slate-500 mb-1 font-medium">
+                <span>Sri Sai Rama Desk</span>
+                <span>Just now</span>
+              </div>
               👋 Hello! How can we assist you today? Send us your document for Xerox, passport photo query, or stationery order.
-            </div>
+            </motion.div>
 
-            <a
+            {/* Quick Reply Chips */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.18, ease: 'easeOut' }}
+              className="space-y-1.5"
+            >
+              <span className="text-[10px] font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider px-1">
+                Quick Replies
+              </span>
+              <div className="flex gap-1.5 overflow-x-auto pb-1 scrollbar-thin scrollbar-thumb-slate-200 dark:scrollbar-thumb-slate-800 -mx-1 px-1">
+                {[
+                  { label: '🖨️ Xerox inquiry', msg: 'Hello Sri Sai Rama Stationary, I have a query regarding Xerox & printing services.' },
+                  { label: '📚 Stationery order', msg: 'Hello Sri Sai Rama Stationary, I would like to place a stationery order.' },
+                  { label: '📸 Photo prints', msg: 'Hello Sri Sai Rama Stationary, I need details about passport photo prints.' },
+                  { label: '⏱️ Shop timings', msg: 'Hello Sri Sai Rama Stationary, what are your shop opening & closing hours today?' },
+                ].map((chip) => (
+                  <a
+                    key={chip.label}
+                    href={getWhatsAppLink(chip.msg)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 text-[11px] font-medium px-2.5 py-1.5 rounded-xl bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-300 border border-emerald-200/60 dark:border-emerald-800/60 hover:bg-emerald-100 dark:hover:bg-emerald-900/50 transition-colors whitespace-nowrap active:scale-95"
+                  >
+                    {chip.label}
+                  </a>
+                ))}
+              </div>
+            </motion.div>
+
+            <motion.a
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.3, delay: 0.22, ease: 'easeOut' }}
               href={getWhatsAppLink('Hello Sri Sai Rama Stationary, I would like to chat with your support team.')}
               target="_blank"
               rel="noopener noreferrer"
@@ -102,7 +201,7 @@ export const FloatingWhatsApp: React.FC = () => {
             >
               <Send className="w-3.5 h-3.5" />
               <span>Start WhatsApp Chat</span>
-            </a>
+            </motion.a>
           </div>
         </div>
       )}
