@@ -42,12 +42,14 @@ export default function App() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Check path for 404 testing or fallback
+  // Ensure page starts at top (Home section) on initial load unless an anchor hash is explicitly provided
   useEffect(() => {
-    if (window.location.pathname !== '/' && !window.location.pathname.endsWith('.html')) {
-      // If path is not root or hash, handle 404
-      if (window.location.hash === '' && window.location.pathname !== '/index.html') {
-        setIs404(true);
+    if (!window.location.hash) {
+      window.scrollTo({ top: 0, left: 0, behavior: 'instant' as ScrollBehavior });
+    } else {
+      const targetEl = document.querySelector(window.location.hash);
+      if (targetEl) {
+        targetEl.scrollIntoView({ behavior: 'smooth' });
       }
     }
   }, []);

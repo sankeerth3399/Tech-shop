@@ -4,6 +4,7 @@ export interface ServiceItem {
   category: 'printing' | 'online' | 'photo_binding' | 'stationery';
   description: string;
   iconName: string;
+  image?: string;
   badge?: string;
   popular?: boolean;
   estimatedTime: string;
