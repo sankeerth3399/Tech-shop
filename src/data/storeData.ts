@@ -34,42 +34,6 @@ export const getWhatsAppLink = (customText?: string) => {
 
 export const servicesData: ServiceItem[] = [
   {
-    id: 'stationery-items',
-    title: 'Stationery Items',
-    category: 'stationery',
-    description: 'Complete range of pens, pencils, geometry sets, calculators, erasers, art materials, files, and craft supplies for school and office.',
-    iconName: 'PenTool',
-    image: '/images/pens.jpg',
-    badge: 'Wide Selection',
-    popular: true,
-    estimatedTime: 'Available Instantly',
-    highlights: ['Branded Pens & Pencils', 'Geometry & Math Kits', 'Calculators & Geometry Tools', 'Art & Craft Essentials'],
-  },
-  {
-    id: 'school-college-notebooks',
-    title: 'School & College Notebooks',
-    category: 'stationery',
-    description: 'High-quality long books, practical record books, drawing books, single line, double line, graph papers, and assignment sheets.',
-    iconName: 'BookOpen',
-    image: '/images/notebooks.jpg',
-    badge: 'Top Quality',
-    popular: true,
-    estimatedTime: 'In Stock',
-    highlights: ['Classmate & Standard Brands', 'Practical & Record Books', 'Graph & Engineering Sheets', 'Drawing & Sketch Pads'],
-  },
-  {
-    id: 'office-stationery',
-    title: 'Office Stationery',
-    category: 'stationery',
-    description: 'Bulk A4 copier paper reams, legal paper, lever arch files, clear display books, staplers, punchers, registers, and stamp pads.',
-    iconName: 'Briefcase',
-    image: '/images/files_folders.jpg',
-    badge: 'Bulk Discount',
-    popular: false,
-    estimatedTime: 'In Stock / Bulk Delivery',
-    highlights: ['JK & Paper One A4 Reams', 'Lever Arch & Box Files', 'Register Books & Bill Books', 'Staplers, Punchers & Pins'],
-  },
-  {
     id: 'xerox-bw-color',
     title: 'Xerox (B&W & Color)',
     category: 'printing',
@@ -225,7 +189,7 @@ export const productsData: ProductItem[] = [
     description: 'High quality long books, practical record books, drawing pads, and single line exercise notebooks with smooth white paper.',
     inStock: true,
     rating: 4.9,
-    image: '/src/assets/images/notebooks_and_pens_1785475968089.jpg',
+    image: '/images/notebooks.jpg',
     tags: ['Notebooks', 'Class Notes', 'Single Line', 'Bestseller'],
   },
   {
@@ -237,7 +201,7 @@ export const productsData: ProductItem[] = [
     description: 'Classic wooden HB graphite pencils with soft erasers, ideal for writing, drawing, and exams.',
     inStock: true,
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1513542789411-b6a5d4f31634?auto=format&fit=crop&q=80&w=800',
+    image: '/images/pencils.jpg',
     tags: ['Pencils', 'Writing Tools', 'Stationery'],
   },
   {
@@ -249,7 +213,7 @@ export const productsData: ProductItem[] = [
     description: 'Comfort grip smooth flow ballpoint and quick-dry gel pens pack ideal for fast writing, exams, and daily note taking.',
     inStock: true,
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1585336261026-675768e71b29?auto=format&fit=crop&q=80&w=800',
+    image: '/images/pens.jpg',
     tags: ['Pens', 'Ball Pens', 'Gel Pens', 'Smooth Writing'],
   },
   {
@@ -261,7 +225,7 @@ export const productsData: ProductItem[] = [
     description: 'Elegant stainless steel metallic finish Parker rollerball and fountain gift pen in a classy presentation box.',
     inStock: true,
     rating: 5.0,
-    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&q=80&w=800',
+    image: '/images/parker_gift_pen.jpg',
     tags: ['Parker Pen', 'Gift Pen', 'Executive'],
   },
   {
@@ -273,7 +237,7 @@ export const productsData: ProductItem[] = [
     description: 'High brightness copier paper ream for double-sided crisp xerox and laser printing.',
     inStock: true,
     rating: 5.0,
-    image: 'https://images.unsplash.com/photo-1586075010923-2dd4570fb338?auto=format&fit=crop&q=80&w=800',
+    image: '/images/a4_paper_ream.jpg',
     tags: ['A4 Paper', '75 GSM', 'Copier Paper'],
   },
   {
@@ -285,7 +249,7 @@ export const productsData: ProductItem[] = [
     description: 'Durable all-metal desk stapler combo with 24/6 staple pin boxes included.',
     inStock: true,
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800',
+    image: '/images/stapler_pins.jpg',
     tags: ['Stapler', 'Staple Pins', 'Desk Tools'],
   },
   {
@@ -297,7 +261,7 @@ export const productsData: ProductItem[] = [
     description: 'Vibrant quick-dry neon highlighters in 5 shades (Green, Orange, Yellow, Pink, Blue) with chiseled tip for smooth marking.',
     inStock: true,
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1569683795645-b62e50fbf103?auto=format&fit=crop&q=80&w=800',
+    image: '/images/highlighters.jpg',
     tags: ['Highlighters', 'Study Tools', 'Markers', 'Neon Colors'],
   },
   {
@@ -309,7 +273,7 @@ export const productsData: ProductItem[] = [
     description: 'Precision 0.8mm metal tip liquid correction whitener pen with quick-dry opaque formula and instant whiteout correction tape.',
     inStock: true,
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1583485088034-697b5bc54ccd?auto=format&fit=crop&q=80&w=800',
+    image: '/images/erasers.jpg',
     tags: ['Whitener', 'Correction Pen', '0.8mm Whitener', 'Whiteout', 'Correction Tape'],
   },
   {
@@ -321,7 +285,7 @@ export const productsData: ProductItem[] = [
     description: 'Bright non-smudging smooth wax & oil pastel crayons set ideal for kids, craft work, and creative coloring.',
     inStock: true,
     rating: 4.7,
-    image: 'https://images.unsplash.com/photo-1520072959219-c595dc870360?auto=format&fit=crop&q=80&w=800',
+    image: '/images/crayons.jpg',
     tags: ['Crayons', 'Wax Crayons', 'Art & Craft'],
   },
   {
@@ -333,7 +297,7 @@ export const productsData: ProductItem[] = [
     description: 'Ergonomic non-slip rubber grip mechanical pen pencils with extra polymer HB lead refill tubes.',
     inStock: true,
     rating: 4.8,
-    image: 'https://images.unsplash.com/photo-1585336261026-675768e71b29?auto=format&fit=crop&q=80&w=800',
+    image: '/images/mechanical_pencils.jpg',
     tags: ['Pen Pencil', 'Mechanical Pencil', 'Lead Pencil', 'Drafting Pencil'],
   },
   {
@@ -345,7 +309,7 @@ export const productsData: ProductItem[] = [
     description: 'Premium quality thick vibrant color sheets & chart papers pack for school project charts, origami, binding covers, and crafts.',
     inStock: true,
     rating: 4.9,
-    image: 'https://images.unsplash.com/photo-1508898578281-774ac4893c0c?auto=format&fit=crop&q=80&w=800',
+    image: '/images/color_papers.jpg',
     tags: ['Colour Paper', 'Chart Paper', 'Craft Sheets', 'A4 Papers'],
   },
   {
@@ -683,21 +647,21 @@ export const galleryData: GalleryItem[] = [
     id: 'gal-1',
     title: 'Store Showcase & Stationery Shelves',
     category: 'Store',
-    image: '/src/assets/images/store_interior_1785399721473.jpg',
+    image: '/images/digital_services_desk.jpg',
     caption: 'Neatly organized aisles featuring notebooks, art kits, pens, and office essentials.',
   },
   {
     id: 'gal-2',
     title: 'Digital Printing & Xerox Center',
     category: 'Printing',
-    image: '/src/assets/images/hero_stationery_banner_1785399706713.jpg',
+    image: '/images/xerox_printing_service.jpg',
     caption: 'High-speed color printing, photostat copier, and paper ream inventory.',
   },
   {
     id: 'gal-3',
     title: 'Lamination & Spiral Binding Counter',
     category: 'Services',
-    image: '/src/assets/images/digital_services_desk_1785399735716.jpg',
+    image: '/images/lamination_service.jpg',
     caption: 'Dedicated station for document lamination, spiral binding, and passport photos.',
   },
 ];

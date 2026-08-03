@@ -45,7 +45,7 @@ export const AboutSection: React.FC = () => {
           >
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl">
               <img
-                src="/src/assets/images/store_interior_1785399721473.jpg"
+                src="/images/digital_services_desk.jpg"
                 alt="Sri Sai Rama Stationary Shop Interior"
                 referrerPolicy="no-referrer"
                 className="w-full h-[420px] object-cover"
@@ -91,36 +91,50 @@ export const AboutSection: React.FC = () => {
             </p>
 
             {/* Core Values Cards */}
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2">
+            <motion.div
+              variants={{
+                hidden: { opacity: 0 },
+                visible: {
+                  opacity: 1,
+                  transition: {
+                    staggerChildren: 0.1,
+                    delayChildren: 0.1,
+                  },
+                },
+              }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: '-40px' }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-2"
+            >
               {values.map((val, idx) => {
                 const IconComp = val.icon;
                 return (
-                  <div key={idx} className="bg-gradient-to-br from-white via-indigo-50/60 to-purple-50/40 dark:from-slate-900 dark:to-indigo-950/50 p-4 rounded-2xl border border-indigo-200/70 dark:border-indigo-900/60 space-y-2 shadow-sm">
+                  <motion.div
+                    key={idx}
+                    variants={{
+                      hidden: { opacity: 0, y: 25 },
+                      visible: {
+                        opacity: 1,
+                        y: 0,
+                        transition: {
+                          duration: 0.5,
+                          ease: [0.21, 0.47, 0.32, 0.98],
+                        },
+                      },
+                    }}
+                    whileHover={{ y: -4, transition: { duration: 0.2 } }}
+                    className="bg-gradient-to-br from-white via-indigo-50/60 to-purple-50/40 dark:from-slate-900 dark:to-indigo-950/50 p-4 rounded-2xl border border-indigo-200/70 dark:border-indigo-900/60 space-y-2 shadow-sm hover:shadow-md transition-shadow"
+                  >
                     <div className="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-900/60 flex items-center justify-center text-indigo-600 dark:text-indigo-300">
                       <IconComp className="w-4 h-4" />
                     </div>
                     <h4 className="text-sm font-bold text-slate-900 dark:text-white">{val.title}</h4>
                     <p className="text-xs text-slate-600 dark:text-slate-300">{val.description}</p>
-                  </div>
+                  </motion.div>
                 );
               })}
-            </div>
-
-            {/* Stats Counter Grid */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4 border-t border-slate-200 dark:border-slate-800">
-              {stats.map((stat, idx) => {
-                const IconComp = stat.icon;
-                return (
-                  <div key={idx} className="text-center sm:text-left">
-                    <div className="flex items-center justify-center sm:justify-start gap-1.5 mb-1">
-                      <IconComp className={`w-4 h-4 ${stat.color}`} />
-                      <span className="text-2xl font-black text-slate-900 dark:text-white">{stat.value}</span>
-                    </div>
-                    <p className="text-xs font-medium text-slate-500 dark:text-slate-400">{stat.label}</p>
-                  </div>
-                );
-              })}
-            </div>
+            </motion.div>
 
           </motion.div>
 

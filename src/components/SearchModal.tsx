@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Search, X, MessageSquare, ArrowRight, Printer, ShoppingBag, Sparkles } from 'lucide-react';
 import { servicesData, productsData, getWhatsAppLink } from '../data/storeData';
 
@@ -29,8 +30,6 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, initi
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [isOpen, onClose]);
 
-  if (!isOpen) return null;
-
   const matchedServices = servicesData.filter((s) => {
     if (!query.trim()) return false;
     const q = query.toLowerCase();
@@ -52,49 +51,65 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, initi
   });
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden relative flex flex-col max-h-[80vh] animate-in zoom-in-95 duration-200">
-        
-        {/* Search Header Bar */}
-        <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
-          <Search className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0" />
-          <input
-            type="text"
-            autoFocus
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Search Xerox, Passport Photos, Notebooks, Aadhar/PAN..."
-            className="w-full text-base bg-transparent text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
-          />
-          <button
+    <AnimatePresence>
+      {isOpen && (
+        <div className="fixed inset-0 z-50 flex items-start justify-center pt-16 sm:pt-20 px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             onClick={onClose}
-            className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
-          >
-            <X className="w-5 h-5" />
-          </button>
-        </div>
+            className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm"
+          />
 
-        {/* Results Container */}
-        <div className="overflow-y-auto p-4 space-y-6 flex-1">
-          {!query.trim() && (
-            <div className="text-center py-8 space-y-3">
-              <Sparkles className="w-8 h-8 text-amber-500 mx-auto" />
-              <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
-                Type anything to search Sri Sai Rama Stationary services and products
-              </p>
-              <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
-                {['Xerox', 'Passport Photo', 'Classmate Notebook', 'Aadhar Correction', 'Spiral Binding', 'A4 Paper'].map((tag) => (
-                  <button
-                    key={tag}
-                    onClick={() => setQuery(tag)}
-                    className="text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-950 hover:text-blue-600 dark:hover:text-blue-400 font-medium transition-colors"
-                  >
-                    {tag}
-                  </button>
-                ))}
-              </div>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.92, y: -10 }}
+            animate={{ opacity: 1, scale: 1, y: 0 }}
+            exit={{ opacity: 0, scale: 0.94, y: -10 }}
+            transition={{ type: 'spring', damping: 25, stiffness: 350 }}
+            className="bg-white dark:bg-slate-900 w-full max-w-2xl rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden relative z-10 flex flex-col max-h-[80vh]"
+          >
+            {/* Search Header Bar */}
+            <div className="p-4 border-b border-slate-200 dark:border-slate-800 flex items-center gap-3">
+              <Search className="w-5 h-5 text-blue-600 dark:text-blue-400 shrink-0" />
+              <input
+                type="text"
+                autoFocus
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search Xerox, Passport Photos, Notebooks, Aadhar/PAN..."
+                className="w-full text-base bg-transparent text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none"
+              />
+              <button
+                onClick={onClose}
+                className="p-1.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-900 dark:hover:text-white active:scale-95 transition-all"
+                aria-label="Close search"
+              >
+                <X className="w-5 h-5" />
+              </button>
             </div>
-          )}
+
+            {/* Results Container */}
+            <div className="overflow-y-auto p-4 space-y-6 flex-1">
+              {!query.trim() && (
+                <div className="text-center py-8 space-y-3">
+                  <Sparkles className="w-8 h-8 text-amber-500 mx-auto" />
+                  <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">
+                    Type anything to search Sri Sai Rama Stationary services and products
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-2 pt-2">
+                    {['Xerox', 'Passport Photo', 'Classmate Notebook', 'Aadhar Correction', 'Spiral Binding', 'A4 Paper'].map((tag) => (
+                      <button
+                        key={tag}
+                        onClick={() => setQuery(tag)}
+                        className="text-xs px-3 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-blue-50 dark:hover:bg-blue-950 hover:text-blue-600 dark:hover:text-blue-400 font-semibold active:scale-95 transition-all"
+                      >
+                        {tag}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+              )}
 
           {/* Matched Services */}
           {matchedServices.length > 0 && (
@@ -203,7 +218,9 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, initi
           Press <kbd className="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono text-[10px]">Esc</kbd> to close
         </div>
 
-      </div>
-    </div>
+          </motion.div>
+        </div>
+      )}
+    </AnimatePresence>
   );
 };

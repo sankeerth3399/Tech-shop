@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import {
   MessageSquare,
@@ -27,6 +27,45 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) => {
   const [heroSearchInput, setHeroSearchInput] = useState('');
+
+  // Typing animation phrases for Hero sub-headline
+  const typingPhrases = [
+    'Xerox services',
+    'Stationery items',
+    'Photo printing',
+    'Government e-Services',
+    'School & Office supplies',
+    'Spiral & Hard binding'
+  ];
+
+  const [phraseIndex, setPhraseIndex] = useState(0);
+  const [currentText, setCurrentText] = useState('');
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  useEffect(() => {
+    const currentPhrase = typingPhrases[phraseIndex];
+    let timer: NodeJS.Timeout;
+
+    if (!isDeleting && currentText === currentPhrase) {
+      // Pause at full word length before deleting
+      timer = setTimeout(() => setIsDeleting(true), 1800);
+    } else if (isDeleting && currentText === '') {
+      // Switch to next phrase
+      setIsDeleting(false);
+      setPhraseIndex((prev) => (prev + 1) % typingPhrases.length);
+    } else {
+      const speed = isDeleting ? 40 : 75;
+      timer = setTimeout(() => {
+        setCurrentText((prev) =>
+          isDeleting
+            ? currentPhrase.substring(0, prev.length - 1)
+            : currentPhrase.substring(0, prev.length + 1)
+        );
+      }, speed);
+    }
+
+    return () => clearTimeout(timer);
+  }, [currentText, isDeleting, phraseIndex]);
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -178,10 +217,19 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
                 </span>
               </h1>
 
-              {/* Subtitle */}
-              <p className="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed">
-                Your one-stop destination for office supplies, academic notebooks, high-speed Xerox, HD color printing, and online government documentation.
-              </p>
+              {/* Subtitle with dynamic Typing Animation */}
+              <div className="text-slate-600 dark:text-slate-300 text-base sm:text-lg max-w-xl leading-relaxed space-y-1">
+                <p className="font-semibold text-slate-800 dark:text-slate-200">
+                  Your one-stop destination for{' '}
+                  <span className="inline-inline font-extrabold text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-950/80 px-2.5 py-0.5 rounded-lg border border-blue-200/60 dark:border-blue-800/60 shadow-2xs">
+                    {currentText}
+                    <span className="animate-pulse text-blue-500 font-normal ml-0.5">|</span>
+                  </span>
+                </p>
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-400">
+                  High-speed Xerox copies, studio passport photos, student notebooks, and online government portal applications in Ayyappa Colony, Dammaiguda.
+                </p>
+              </div>
 
               {/* Search Bar */}
               <form onSubmit={handleSearchSubmit} className="max-w-xl">
@@ -212,7 +260,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
                   href={getWhatsAppLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-blue-600 hover:bg-blue-700 text-white px-7 py-3.5 rounded-2xl font-bold text-sm transition-all flex items-center gap-2 shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30"
+                  className="bg-blue-600 hover:bg-blue-700 active:scale-[0.98] text-white px-7 py-3.5 rounded-2xl font-bold text-sm transition-all flex items-center gap-2 shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30"
                 >
                   <MessageSquare className="w-4 h-4 fill-white" />
                   <span>Order via WhatsApp</span>
@@ -220,7 +268,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
 
                 <a
                   href={`tel:${businessInfo.phone}`}
-                  className="bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-6 py-3.5 rounded-2xl font-bold text-sm transition-all flex items-center gap-2"
+                  className="bg-slate-100 hover:bg-slate-200 active:scale-[0.98] dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-800 dark:text-slate-200 border border-slate-200 dark:border-slate-700 px-6 py-3.5 rounded-2xl font-bold text-sm transition-all flex items-center gap-2"
                 >
                   <Phone className="w-4 h-4 text-blue-600 dark:text-blue-400" />
                   <span>Call +91 9866094840</span>
@@ -228,7 +276,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
 
                 <button
                   onClick={onNavigateToServices}
-                  className="text-slate-600 hover:text-blue-600 dark:text-slate-400 dark:hover:text-blue-400 px-4 py-3.5 font-bold text-sm flex items-center gap-1 transition-colors"
+                  className="text-slate-600 hover:text-blue-600 active:scale-[0.98] dark:text-slate-400 dark:hover:text-blue-400 px-4 py-3.5 font-bold text-sm flex items-center gap-1 transition-all"
                 >
                   <span>View All 15 Services</span>
                   <ArrowRight className="w-4 h-4" />

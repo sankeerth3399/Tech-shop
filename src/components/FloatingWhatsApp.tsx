@@ -1,12 +1,29 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { MessageSquare, Phone, X, Send } from 'lucide-react';
+import { MessageSquare, Phone, X, Send, ChevronUp } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { businessInfo, getWhatsAppLink } from '../data/storeData';
 
 export const FloatingWhatsApp: React.FC = () => {
   const [popupOpen, setPopupOpen] = useState(false);
   const [isTyping, setIsTyping] = useState(true);
+  const [showScrollTop, setShowScrollTop] = useState(false);
   const playedSoundRef = useRef(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   useEffect(() => {
     if (!popupOpen) return;
@@ -214,15 +231,32 @@ export const FloatingWhatsApp: React.FC = () => {
       )}
       </AnimatePresence>
 
-      {/* Floating Action Button (Desktop & Tablet) */}
-      <div className="fixed bottom-6 right-6 z-40 hidden sm:flex items-center gap-2">
+      {/* Floating Action Buttons (Desktop & Mobile) */}
+      <div className="fixed bottom-16 sm:bottom-6 right-4 sm:right-6 z-40 flex items-center gap-2.5">
+        <AnimatePresence>
+          {showScrollTop && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.6, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.6, y: 10 }}
+              transition={{ type: 'spring', damping: 20, stiffness: 300 }}
+              onClick={scrollToTop}
+              className="p-3 sm:p-3.5 rounded-full bg-slate-900/90 dark:bg-slate-800/90 hover:bg-slate-900 text-white dark:text-slate-100 shadow-xl border border-slate-700/60 backdrop-blur-md transition-all hover:scale-105 active:scale-95 flex items-center justify-center"
+              aria-label="Scroll to top"
+              title="Back to top"
+            >
+              <ChevronUp className="w-5 h-5" />
+            </motion.button>
+          )}
+        </AnimatePresence>
+
         <button
           onClick={handleTogglePopup}
-          className="relative group p-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl shadow-emerald-500/30 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center"
+          className="relative group p-3.5 sm:p-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl shadow-emerald-500/30 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center"
           aria-label="Chat on WhatsApp"
         >
           <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-30 pointer-events-none" />
-          <MessageSquare className="w-6 h-6 fill-white" />
+          <MessageSquare className="w-5 sm:w-6 h-5 sm:h-6 fill-white" />
           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white dark:border-slate-900" />
         </button>
       </div>

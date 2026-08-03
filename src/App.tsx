@@ -4,6 +4,7 @@ import { SeoHead } from './components/SeoHead';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { ServicesSection } from './components/ServicesSection';
+import { DocumentPrepGuide } from './components/DocumentPrepGuide';
 import { ProductsSection } from './components/ProductsSection';
 import { AboutSection } from './components/AboutSection';
 import { AIChatbotSection } from './components/AIChatbotSection';
@@ -101,6 +102,9 @@ export default function App() {
 
           {/* Services Section */}
           <ServicesSection />
+
+          {/* Document Prep Checklist & PDF Guide Helper */}
+          <DocumentPrepGuide />
 
           {/* Products Catalog */}
           <ProductsSection />

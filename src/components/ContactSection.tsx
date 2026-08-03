@@ -147,22 +147,7 @@ Notes: ${formData.notes || 'N/A'}`;
 
             </div>
 
-            {/* Quick Directions Card */}
-            <div className="p-5 rounded-3xl bg-blue-50 dark:bg-blue-950/40 border border-blue-200 dark:border-blue-900/60 flex items-center justify-between gap-4">
-              <div>
-                <h4 className="text-sm font-bold text-slate-900 dark:text-white">Planning a visit?</h4>
-                <p className="text-xs text-slate-600 dark:text-slate-300">Open Google Maps for precise GPS turn-by-turn directions.</p>
-              </div>
-              <a
-                href="https://maps.google.com/?q=Dammaiguda+Hyderabad+Ayyappa+Colony"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold flex items-center gap-1.5 shrink-0 shadow-sm"
-              >
-                <Navigation className="w-3.5 h-3.5" />
-                <span>Directions</span>
-              </a>
-            </div>
+
 
           </motion.div>
 

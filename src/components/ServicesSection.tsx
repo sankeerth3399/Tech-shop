@@ -69,6 +69,16 @@ export const ServicesSection: React.FC = () => {
           <p className="text-base text-slate-600 dark:text-slate-300">
             From high-speed photocopies and passport photos to online government portal submissions, we provide fast, accurate, and reliable services right in Ayyappa Colony, Dammaiguda.
           </p>
+          <div className="pt-1">
+            <a
+              href="#doc-prep-guide"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-blue-50 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 font-bold text-xs border border-blue-200 dark:border-blue-800 hover:bg-blue-100 dark:hover:bg-blue-900 transition-all shadow-xs"
+            >
+              <FileCheck className="w-4 h-4 text-blue-600 dark:text-blue-400" />
+              <span>Preparing files? Check our Document & Print Prep Checklist</span>
+              <ArrowRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
         </motion.div>
 
         {/* Filter Bar & Search */}
@@ -116,18 +126,41 @@ export const ServicesSection: React.FC = () => {
         </motion.div>
 
         {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredServices.map((service, index) => {
+        <motion.div
+          variants={{
+            hidden: { opacity: 0 },
+            visible: {
+              opacity: 1,
+              transition: {
+                staggerChildren: 0.07,
+                delayChildren: 0.05,
+              },
+            },
+          }}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: '-40px' }}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+        >
+          {filteredServices.map((service) => {
             const IconComponent = iconMap[service.iconName] || Printer;
             const waCustomText = `Hello Sri Sai Rama Stationary, I would like to inquire about your "${service.title}" service.`;
 
             return (
               <motion.div
                 key={service.id}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.15 }}
-                transition={{ duration: 0.5, delay: (index % 3) * 0.08, ease: [0.21, 0.47, 0.32, 0.98] }}
+                variants={{
+                  hidden: { opacity: 0, y: 35 },
+                  visible: {
+                    opacity: 1,
+                    y: 0,
+                    transition: {
+                      duration: 0.5,
+                      ease: [0.21, 0.47, 0.32, 0.98],
+                    },
+                  },
+                }}
+                whileHover={{ y: -6, transition: { duration: 0.25, ease: 'easeOut' } }}
                 className="bg-gradient-to-b from-white via-slate-50/90 to-blue-50/50 dark:from-slate-800 dark:via-slate-800/90 dark:to-indigo-950/50 rounded-2xl border border-blue-200/70 dark:border-indigo-800/60 shadow-md hover:shadow-2xl hover:border-blue-400 dark:hover:border-blue-500 transition-all duration-300 flex flex-col justify-between group overflow-hidden"
               >
                 <div>
@@ -219,7 +252,7 @@ export const ServicesSection: React.FC = () => {
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
 
         {/* Empty state if search fails */}
         {filteredServices.length === 0 && (
