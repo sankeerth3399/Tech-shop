@@ -28,6 +28,15 @@ import regeneratedImageErasers from '../assets/images/regenerated_image_17858611
 import regeneratedImageMarkers from '../assets/images/regenerated_image_1785861281169.jpg';
 import regeneratedImageCalculator from '../assets/images/regenerated_image_1785861286416.jpg';
 
+import serviceXeroxImg from '../assets/images/xerox_printing_service_1785741526911.jpg';
+import serviceColorPrintImg from '../assets/images/color_printing_service_1785742193663.jpg';
+import serviceScanningImg from '../assets/images/document_scanning_service_1785742221682.jpg';
+import serviceLaminationImg from '../assets/images/lamination_service_1785742206503.jpg';
+import serviceSpiralBindingImg from '../assets/images/spiral_binding_service_1785741554480.jpg';
+import servicePassportPhotosImg from '../assets/images/passport_photos_service_1785741541647.jpg';
+import serviceDigitalDeskImg from '../assets/images/digital_services_desk_1785399735716.jpg';
+import serviceDigitalFormImg from '../assets/images/digital_form_service_1785742232586.jpg';
+
 export const businessInfo: BusinessInfo = {
   name: 'Sri Sai Rama Stationary',
   tagline: 'Your Trusted Destination for Stationery, Office Supplies, Printing & Digital Online Services in Dammaiguda',
@@ -67,7 +76,7 @@ export const servicesData: ServiceItem[] = [
     category: 'printing',
     description: 'Fast, crisp black & white and vibrant full-color photostat copies. Double-sided copying with heavy duty laser machines.',
     iconName: 'Copy',
-    image: '/images/xerox_printing_service.jpg',
+    image: serviceXeroxImg,
     badge: 'Super Fast',
     popular: true,
     estimatedTime: '1 - 5 Minutes',
@@ -79,7 +88,7 @@ export const servicesData: ServiceItem[] = [
     category: 'printing',
     description: 'High-definition digital printing from WhatsApp, Email, Pen Drive, or Mobile for projects, certificates, brochures, and documents.',
     iconName: 'Printer',
-    image: '/images/color_printing_service.jpg',
+    image: serviceColorPrintImg,
     badge: 'HD Quality',
     popular: true,
     estimatedTime: 'Instant / Ready in 5 Mins',
@@ -91,7 +100,7 @@ export const servicesData: ServiceItem[] = [
     category: 'printing',
     description: 'High-resolution multi-page document scanning to PDF/JPEG. Direct scan to WhatsApp, email, or USB storage drive.',
     iconName: 'FileScan',
-    image: '/images/document_scanning_service.jpg',
+    image: serviceScanningImg,
     badge: 'High Res',
     popular: false,
     estimatedTime: '2 - 5 Minutes',
@@ -103,7 +112,7 @@ export const servicesData: ServiceItem[] = [
     category: 'photo_binding',
     description: 'Heavy-duty pouch lamination for certificates, A4 documents, marks cards, Aadhar cards, and ID cards to protect from water and wear.',
     iconName: 'ShieldCheck',
-    image: '/images/lamination_service.jpg',
+    image: serviceLaminationImg,
     badge: 'Waterproof',
     popular: true,
     estimatedTime: '2 Minutes',
@@ -115,7 +124,7 @@ export const servicesData: ServiceItem[] = [
     category: 'photo_binding',
     description: 'Professional spiral comb binding and hard binding with transparent plastic covers for college projects, reports, and books.',
     iconName: 'Layers',
-    image: '/images/spiral_binding_service.jpg',
+    image: serviceSpiralBindingImg,
     badge: 'Project Essential',
     popular: true,
     estimatedTime: '10 - 15 Minutes',
@@ -139,7 +148,7 @@ export const servicesData: ServiceItem[] = [
     category: 'photo_binding',
     description: 'Instant glossy passport size photographs with custom white/blue background. Printed in 8, 16, or 32 copy sets within minutes.',
     iconName: 'Camera',
-    image: '/images/passport_photos_service.jpg',
+    image: servicePassportPhotosImg,
     badge: '5 Min Express',
     popular: true,
     estimatedTime: '5 Minutes',
@@ -151,7 +160,7 @@ export const servicesData: ServiceItem[] = [
     category: 'online',
     description: 'Online support for Aadhar card downloading, mobile number linking status, address change application, and PVC card ordering.',
     iconName: 'CreditCard',
-    image: '/images/digital_services_desk.jpg?v=2',
+    image: serviceDigitalDeskImg,
     badge: 'Govt Portal Assist',
     popular: true,
     estimatedTime: '10 - 15 Minutes',
@@ -163,7 +172,7 @@ export const servicesData: ServiceItem[] = [
     category: 'online',
     description: 'New e-PAN card application via NSDL/UTIITSL and correction of name, father name, date of birth, or photo update.',
     iconName: 'FileCheck',
-    image: '/images/digital_form_service.jpg',
+    image: serviceDigitalFormImg,
     badge: 'Quick Approval',
     popular: true,
     estimatedTime: 'Instant Submission',
@@ -638,21 +647,21 @@ export const galleryData: GalleryItem[] = [
     id: 'gal-1',
     title: 'Store Showcase & Stationery Shelves',
     category: 'Store',
-    image: '/images/digital_services_desk.jpg?v=2',
+    image: serviceDigitalDeskImg,
     caption: 'Neatly organized aisles featuring notebooks, art kits, pens, and office essentials.',
   },
   {
     id: 'gal-2',
     title: 'Digital Printing & Xerox Center',
     category: 'Printing',
-    image: '/images/xerox_printing_service.jpg',
+    image: serviceXeroxImg,
     caption: 'High-speed color printing, photostat copier, and paper ream inventory.',
   },
   {
     id: 'gal-3',
     title: 'Lamination & Spiral Binding Counter',
     category: 'Services',
-    image: '/images/lamination_service.jpg',
+    image: serviceLaminationImg,
     caption: 'Dedicated station for document lamination, spiral binding, and passport photos.',
   },
 ];

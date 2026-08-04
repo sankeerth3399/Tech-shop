@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, Award, HeartHandshake, Zap, Users, CheckCircle, MapPin, Building2 } from 'lucide-react';
 import { businessInfo } from '../data/storeData';
+import aboutImage from '../assets/images/digital_services_desk_1785399735716.jpg';
 
 export const AboutSection: React.FC = () => {
   const stats = [
@@ -45,9 +46,15 @@ export const AboutSection: React.FC = () => {
           >
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl">
               <img
-                src="/images/digital_services_desk.jpg?v=2"
+                src={aboutImage}
                 alt="Sri Sai Rama Stationary Shop Interior"
+                loading="lazy"
+                decoding="async"
                 referrerPolicy="no-referrer"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800';
+                }}
                 className="w-full h-[420px] object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent" />

@@ -217,28 +217,20 @@ export const ProductsSection: React.FC = () => {
                 setSelectedCategory('All');
                 setSearchQuery('');
               }}
-              className="px-4 py-2 text-xs font-bold rounded-xl bg-orange-500 text-white hover:bg-orange-600 transition-colors"
+              className="px-4 py-2 text-xs font-bold rounded-xl bg-orange-500 text-white hover:bg-orange-600 transition-colors cursor-pointer"
             >
               Reset Filters
             </button>
           </div>
         ) : (
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-50px' }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
-          >
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {filteredProducts.map((product) => {
               const waProductMsg = `Hello Sri Sai Rama Stationary, I want to order "${product.name}". Please let me know availability.`;
 
               return (
-                <motion.div
+                <div
                   key={product.id}
-                  variants={itemVariants}
-                  whileHover={{ y: -6, transition: { duration: 0.2, ease: 'easeOut' } }}
-                  className="bg-gradient-to-b from-white via-amber-50/50 to-orange-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/40 rounded-2xl border border-amber-200/70 dark:border-amber-900/60 overflow-hidden shadow-md hover:shadow-2xl hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-300 flex flex-col justify-between group"
+                  className="bg-gradient-to-b from-white via-amber-50/50 to-orange-50/40 dark:from-slate-900 dark:via-slate-900 dark:to-amber-950/40 rounded-2xl border border-amber-200/70 dark:border-amber-900/60 overflow-hidden shadow-md hover:shadow-xl hover:border-orange-400 dark:hover:border-orange-500 transition-all duration-200 flex flex-col justify-between group hover:-translate-y-1"
                 >
                   <div>
                     {/* Image Container */}
@@ -246,6 +238,8 @@ export const ProductsSection: React.FC = () => {
                       <img
                         src={getProductImageUrl(product)}
                         alt={product.name}
+                        loading="lazy"
+                        decoding="async"
                         referrerPolicy="no-referrer"
                         onError={(e) => {
                           const target = e.target as HTMLImageElement;
@@ -253,7 +247,7 @@ export const ProductsSection: React.FC = () => {
                             target.src = FALLBACK_PRODUCT_IMAGE;
                           }
                         }}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
                       <span className="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white text-[11px] font-bold px-2 py-0.5 rounded-md shadow-xs flex items-center gap-1">
                         <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
@@ -288,7 +282,7 @@ export const ProductsSection: React.FC = () => {
                   <div className="p-5 pt-0 flex items-center gap-2">
                     <button
                       onClick={() => setSelectedProduct(product)}
-                      className="flex-1 py-2 px-3 text-xs font-semibold rounded-xl bg-slate-200/80 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors"
+                      className="flex-1 py-2 px-3 text-xs font-semibold rounded-xl bg-slate-200/80 dark:bg-slate-800 text-slate-800 dark:text-slate-200 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors cursor-pointer"
                     >
                       Quick View
                     </button>
@@ -297,16 +291,16 @@ export const ProductsSection: React.FC = () => {
                       href={getWhatsAppLink(waProductMsg)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 py-2 px-3 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center gap-1.5 shadow-xs transition-colors"
+                      className="flex-1 py-2 px-3 text-xs font-bold rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white flex items-center justify-center gap-1.5 shadow-xs transition-colors cursor-pointer"
                     >
                       <MessageSquare className="w-3.5 h-3.5" />
                       <span>Order</span>
                     </a>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
-          </motion.div>
+          </div>
         )}
 
       </div>
