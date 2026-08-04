@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { motion } from 'motion/react';
 import { ThemeProvider } from './context/ThemeContext';
 import { SeoHead } from './components/SeoHead';
 import { Header } from './components/Header';
@@ -13,6 +14,13 @@ import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { Footer } from './components/Footer';
 import { SearchModal } from './components/SearchModal';
 import { NotFoundPage } from './components/NotFoundPage';
+
+const sectionEntranceProps = {
+  initial: { opacity: 0, y: 28 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.12 },
+  transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] }
+};
 
 export default function App() {
   const [isSearchOpen, setIsSearchOpen] = useState(false);

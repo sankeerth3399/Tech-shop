@@ -1,4 +1,32 @@
 import { BusinessInfo, FAQItem, GalleryItem, ProductItem, ServiceItem } from '../types';
+import regeneratedImagePens from '../assets/images/regenerated_image_1785851341624.jpg';
+import regeneratedImagePencils from '../assets/images/regenerated_image_1785851502909.jpg';
+import regeneratedImageParker from '../assets/images/regenerated_image_1785851811413.jpg';
+import regeneratedImagePaper from '../assets/images/regenerated_image_1785851815528.jpg';
+import regeneratedImageStapler from '../assets/images/regenerated_image_1785851817901.jpg';
+import regeneratedImageNotebooks from '../assets/images/regenerated_image_1785851937407.jpg';
+import regeneratedImageHighlighters from '../assets/images/regenerated_image_1785852497215.jpg';
+import regeneratedImageWhitener from '../assets/images/regenerated_image_1785852501604.jpg';
+import regeneratedImageCrayons from '../assets/images/regenerated_image_1785852504467.jpg';
+import regeneratedImageExamPad from '../assets/images/regenerated_image_1785856362462.jpg';
+import regeneratedImageAdhesiveTapes from '../assets/images/regenerated_image_1785853554896.jpg';
+import regeneratedImageColourPapers from '../assets/images/regenerated_image_1785853781419.jpg';
+import regeneratedImageFilesFolders from '../assets/images/regenerated_image_1785853777456.jpg';
+import regeneratedImageCardboard from '../assets/images/regenerated_image_1785856364828.jpg';
+import regeneratedImageStickPens from '../assets/images/regenerated_image_1785856864330.jpg';
+import regeneratedImageLiquidGlue from '../assets/images/regenerated_image_1785857897289.jpg';
+import regeneratedImageGlueSticks from '../assets/images/regenerated_image_1785857900551.jpg';
+import regeneratedImageGeometryBox from '../assets/images/regenerated_image_1785857892253.jpg';
+import regeneratedImagePencilBoxes from '../assets/images/regenerated_image_1785859697389.jpg';
+import regeneratedImagePencilPouches from '../assets/images/regenerated_image_1785860268223.jpg';
+import regeneratedImageThermocol from '../assets/images/regenerated_image_1785860745992.jpg';
+import regeneratedImageWhiteboard from '../assets/images/regenerated_image_1785860747991.jpg';
+import regeneratedImageBookCovers from '../assets/images/regenerated_image_1785860752463.jpg';
+import regeneratedImageCourierEnvelopes from '../assets/images/regenerated_image_1785861106784.jpg';
+import regeneratedImageSharpeners from '../assets/images/regenerated_image_1785861107998.jpg';
+import regeneratedImageErasers from '../assets/images/regenerated_image_1785861112971.jpg';
+import regeneratedImageMarkers from '../assets/images/regenerated_image_1785861281169.jpg';
+import regeneratedImageCalculator from '../assets/images/regenerated_image_1785861286416.jpg';
 
 export const businessInfo: BusinessInfo = {
   name: 'Sri Sai Rama Stationary',
@@ -99,7 +127,7 @@ export const servicesData: ServiceItem[] = [
     category: 'printing',
     description: 'Professional printer ink cartridge and ink bottle refilling with high grade dark black and color dye inks for all major printer brands.',
     iconName: 'Droplet',
-    image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&q=80&w=800',
     badge: 'Cost Saver',
     popular: false,
     estimatedTime: '15 - 20 Minutes',
@@ -123,7 +151,7 @@ export const servicesData: ServiceItem[] = [
     category: 'online',
     description: 'Online support for Aadhar card downloading, mobile number linking status, address change application, and PVC card ordering.',
     iconName: 'CreditCard',
-    image: '/images/digital_services_desk.jpg',
+    image: '/images/digital_services_desk.jpg?v=2',
     badge: 'Govt Portal Assist',
     popular: true,
     estimatedTime: '10 - 15 Minutes',
@@ -147,7 +175,7 @@ export const servicesData: ServiceItem[] = [
     category: 'online',
     description: 'Expert online application filling for government job notifications, university admissions, hall tickets, scholarships, and exam fees.',
     iconName: 'Globe',
-    image: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&q=80&w=800',
     badge: 'Error Free',
     popular: true,
     estimatedTime: '15 - 30 Minutes',
@@ -189,19 +217,19 @@ export const productsData: ProductItem[] = [
     description: 'High quality long books, practical record books, drawing pads, and single line exercise notebooks with smooth white paper.',
     inStock: true,
     rating: 4.9,
-    image: '/images/notebooks.jpg',
+    image: regeneratedImageNotebooks,
     tags: ['Notebooks', 'Class Notes', 'Single Line', 'Bestseller'],
   },
   {
     id: 'pencils',
-    name: 'Graphite HB Pencils Pack',
+    name: 'pencils & Pen Pencils',
     category: 'Stationery Essentials',
     price: 60,
     originalPrice: 70,
     description: 'Classic wooden HB graphite pencils with soft erasers, ideal for writing, drawing, and exams.',
     inStock: true,
     rating: 4.8,
-    image: '/images/pencils.jpg',
+    image: regeneratedImagePencils,
     tags: ['Pencils', 'Writing Tools', 'Stationery'],
   },
   {
@@ -213,7 +241,7 @@ export const productsData: ProductItem[] = [
     description: 'Comfort grip smooth flow ballpoint and quick-dry gel pens pack ideal for fast writing, exams, and daily note taking.',
     inStock: true,
     rating: 4.9,
-    image: '/images/pens.jpg',
+    image: regeneratedImagePens,
     tags: ['Pens', 'Ball Pens', 'Gel Pens', 'Smooth Writing'],
   },
   {
@@ -225,7 +253,7 @@ export const productsData: ProductItem[] = [
     description: 'Elegant stainless steel metallic finish Parker rollerball and fountain gift pen in a classy presentation box.',
     inStock: true,
     rating: 5.0,
-    image: '/images/parker_gift_pen.jpg',
+    image: regeneratedImageParker,
     tags: ['Parker Pen', 'Gift Pen', 'Executive'],
   },
   {
@@ -237,7 +265,7 @@ export const productsData: ProductItem[] = [
     description: 'High brightness copier paper ream for double-sided crisp xerox and laser printing.',
     inStock: true,
     rating: 5.0,
-    image: '/images/a4_paper_ream.jpg',
+    image: regeneratedImagePaper,
     tags: ['A4 Paper', '75 GSM', 'Copier Paper'],
   },
   {
@@ -249,7 +277,7 @@ export const productsData: ProductItem[] = [
     description: 'Durable all-metal desk stapler combo with 24/6 staple pin boxes included.',
     inStock: true,
     rating: 4.8,
-    image: '/images/stapler_pins.jpg',
+    image: regeneratedImageStapler,
     tags: ['Stapler', 'Staple Pins', 'Desk Tools'],
   },
   {
@@ -261,7 +289,7 @@ export const productsData: ProductItem[] = [
     description: 'Vibrant quick-dry neon highlighters in 5 shades (Green, Orange, Yellow, Pink, Blue) with chiseled tip for smooth marking.',
     inStock: true,
     rating: 4.9,
-    image: '/images/highlighters.jpg',
+    image: regeneratedImageHighlighters,
     tags: ['Highlighters', 'Study Tools', 'Markers', 'Neon Colors'],
   },
   {
@@ -273,32 +301,20 @@ export const productsData: ProductItem[] = [
     description: 'Precision 0.8mm metal tip liquid correction whitener pen with quick-dry opaque formula and instant whiteout correction tape.',
     inStock: true,
     rating: 4.8,
-    image: '/images/erasers.jpg',
+    image: regeneratedImageWhitener,
     tags: ['Whitener', 'Correction Pen', '0.8mm Whitener', 'Whiteout', 'Correction Tape'],
   },
   {
     id: 'smooth-crayons-box',
-    name: 'Smooth Oil & Wax Crayons Color Box',
+    name: 'Crayons and Colour Pencils',
     category: 'Art & Craft',
     price: 70,
     originalPrice: 85,
     description: 'Bright non-smudging smooth wax & oil pastel crayons set ideal for kids, craft work, and creative coloring.',
     inStock: true,
     rating: 4.7,
-    image: '/images/crayons.jpg',
+    image: regeneratedImageCrayons,
     tags: ['Crayons', 'Wax Crayons', 'Art & Craft'],
-  },
-  {
-    id: 'mechanical-pen-pencils',
-    name: 'Precision Mechanical Pen Pencils (0.5mm / 0.7mm)',
-    category: 'Stationery Essentials',
-    price: 45,
-    originalPrice: 60,
-    description: 'Ergonomic non-slip rubber grip mechanical pen pencils with extra polymer HB lead refill tubes.',
-    inStock: true,
-    rating: 4.8,
-    image: '/images/mechanical_pencils.jpg',
-    tags: ['Pen Pencil', 'Mechanical Pencil', 'Lead Pencil', 'Drafting Pencil'],
   },
   {
     id: 'a4-colour-papers-pack',
@@ -309,7 +325,7 @@ export const productsData: ProductItem[] = [
     description: 'Premium quality thick vibrant color sheets & chart papers pack for school project charts, origami, binding covers, and crafts.',
     inStock: true,
     rating: 4.9,
-    image: '/images/color_papers.jpg',
+    image: regeneratedImageColourPapers,
     tags: ['Colour Paper', 'Chart Paper', 'Craft Sheets', 'A4 Papers'],
   },
   {
@@ -321,19 +337,19 @@ export const productsData: ProductItem[] = [
     description: 'Unbreakable transparent acrylic exam writing pad with strong stainless steel clip and centimeter measuring scale edges.',
     inStock: true,
     rating: 4.8,
-    image: '/images/exam_pad.jpg',
+    image: regeneratedImageExamPad,
     tags: ['Exam Board', 'Writing Pad', 'Acrylic Pad'],
   },
   {
     id: 'colour-pencils-set',
-    name: 'Multicolor Wood Colour Pencils Set',
+    name: 'Stick pens and sketches',
     category: 'Art & Craft',
     price: 90,
     originalPrice: 110,
     description: 'Smooth blending non-toxic artist wood colour pencils set with break-resistant lead for drawing and colouring.',
     inStock: true,
     rating: 4.8,
-    image: '/images/color_pencils.jpg',
+    image: regeneratedImageStickPens,
     tags: ['Colour Pencils', 'Drawing', 'Art & Craft', 'Coloring'],
   },
   {
@@ -345,7 +361,7 @@ export const productsData: ProductItem[] = [
     description: 'Heavy-duty plastic report files, ring binders, and multi-pocket document folders set for storage.',
     inStock: true,
     rating: 4.8,
-    image: '/images/files_folders.jpg',
+    image: regeneratedImageFilesFolders,
     tags: ['Files', 'Folders', 'Document Storage'],
   },
   {
@@ -357,7 +373,7 @@ export const productsData: ProductItem[] = [
     description: 'High-tack transparent rolls, brown box packaging tape, and double-sided mounting adhesive tape set.',
     inStock: true,
     rating: 4.8,
-    image: '/images/adhesive_tapes.jpg',
+    image: regeneratedImageAdhesiveTapes,
     tags: ['Adhesive Tapes', 'Packaging Tape', 'Clear Tape', 'Fixing'],
   },
   {
@@ -369,7 +385,7 @@ export const productsData: ProductItem[] = [
     description: 'Strong-bond non-toxic liquid white craft adhesive glue with precision squeeze nozzle for paper, wood, and fabric.',
     inStock: true,
     rating: 4.8,
-    image: '/images/liquid_glue.jpg',
+    image: regeneratedImageLiquidGlue,
     tags: ['Liquid Glue', 'White Glue', 'Craft Adhesive', 'PVA Glue'],
   },
   {
@@ -381,19 +397,19 @@ export const productsData: ProductItem[] = [
     description: 'Mess-free washable twist-up paper adhesive glue sticks for clean crafts and document pasting.',
     inStock: true,
     rating: 4.9,
-    image: '/images/glue_sticks.jpg',
+    image: regeneratedImageGlueSticks,
     tags: ['Glue Stick', 'Paper Adhesive', 'Quick Dry', 'Craft Supplies'],
   },
   {
     id: 'pencil-boxes-set',
-    name: 'Dual-Compartment Metal & Magnetic Pencil Boxes',
+    name: 'Pencil Boxes',
     category: 'Stationery Essentials',
     price: 110,
     originalPrice: 140,
     description: 'Durable dual-layer metal and magnetic plastic pencil cases with built-in sharpener slots for students.',
     inStock: true,
     rating: 4.8,
-    image: '/images/pencil_boxes.jpg',
+    image: regeneratedImagePencilBoxes,
     tags: ['Pencil Box', 'Pencil Case', 'Stationery Organizer'],
   },
   {
@@ -405,7 +421,7 @@ export const productsData: ProductItem[] = [
     description: 'Spacious washable canvas and mesh zipper pouches for organizing pens, pencils, erasers, and geometry sets.',
     inStock: true,
     rating: 4.9,
-    image: '/images/pencil_pouches.jpg',
+    image: regeneratedImagePencilPouches,
     tags: ['Pencil Pouch', 'Zipper Pouch', 'Stationery Organizer'],
   },
   {
@@ -417,7 +433,7 @@ export const productsData: ProductItem[] = [
     description: 'Complete metal geometry instrument box featuring self-centering compass, divider, 15cm ruler, protractor, set squares, mini pencil, eraser, and sharpener.',
     inStock: true,
     rating: 4.9,
-    image: '/images/geometry_box.jpg',
+    image: regeneratedImageGeometryBox,
     tags: ['Geometry Box', 'Compass Set', 'Mathematical Instruments', 'Ruler'],
   },
   {
@@ -429,20 +445,8 @@ export const productsData: ProductItem[] = [
     description: 'Thick corrugated and stiff craft cardboard sheets ideal for project backings, DIY models, and sturdy packing.',
     inStock: true,
     rating: 4.8,
-    image: '/images/cardboard_sheets.jpg',
+    image: regeneratedImageCardboard,
     tags: ['Cardboard Sheets', 'Craft Board', 'Project Supplies', 'Corrugated Sheet'],
-  },
-  {
-    id: 'big-size-chart-papers',
-    name: 'Vibrant Big Size Project Chart Papers Pack',
-    category: 'Papers & Files',
-    price: 40,
-    originalPrice: 50,
-    description: 'Bright high-gsm large poster chart papers in white, yellow, blue, pink, green, and black for school and college presentation charts.',
-    inStock: true,
-    rating: 4.9,
-    image: '/images/chart_papers.jpg',
-    tags: ['Chart Paper', 'Poster Chart', 'School Chart', 'Project Sheet'],
   },
   {
     id: 'thermocol-sheets-pack',
@@ -453,7 +457,7 @@ export const productsData: ProductItem[] = [
     description: 'Smooth white polystyrene thermocol sheets ideal for school science models, art exhibition crafts, and protective packaging.',
     inStock: true,
     rating: 4.7,
-    image: '/images/thermocol_sheets.jpg',
+    image: regeneratedImageThermocol,
     tags: ['Thermocol', 'Science Model Sheet', 'Craft Material', 'Exhibition Sheet'],
   },
   {
@@ -465,7 +469,7 @@ export const productsData: ProductItem[] = [
     description: 'Sleek dry-erase white board with sturdy aluminum corner frame, smooth scratch-resistant surface, magnetic duster, and dry markers.',
     inStock: true,
     rating: 4.9,
-    image: '/images/whiteboard.jpg',
+    image: regeneratedImageWhiteboard,
     tags: ['White Board', 'Dry Erase Board', 'Marker Board', 'Office Board'],
   },
   {
@@ -477,7 +481,7 @@ export const productsData: ProductItem[] = [
     description: 'High durability waterproof transparent sheet rolls and pre-cut brown paper rolls for wrapping school notebooks and textbooks.',
     inStock: true,
     rating: 4.8,
-    image: '/images/book_covers.jpg',
+    image: regeneratedImageBookCovers,
     tags: ['Book Cover', 'Plastic Wrapping Roll', 'Brown Paper Cover', 'Notebook Protection'],
   },
   {
@@ -489,19 +493,19 @@ export const productsData: ProductItem[] = [
     description: 'Tear-resistant cloth-lined brown paper courier document envelopes with self-adhesive peel-and-seal flap for safe dispatch of certificates, files, and catalogues.',
     inStock: true,
     rating: 4.9,
-    image: '/images/courier_envelopes.jpg',
+    image: regeneratedImageCourierEnvelopes,
     tags: ['Courier Envelopes', 'Document Envelopes', 'Cloth Lined Envelopes', 'Catalogue Envelopes'],
   },
   {
     id: 'dual-hole-sharpeners',
-    name: 'Compact Dual-Hole Pencil Sharpeners Pack with Bin',
+    name: 'Sharpeners',
     category: 'Stationery Essentials',
     price: 20,
     originalPrice: 25,
     description: 'High-grade anti-rust steel blade dual-hole sharpeners with translucent shavings container bin for clean desk use.',
     inStock: true,
     rating: 4.8,
-    image: '/images/sharpeners.jpg',
+    image: regeneratedImageSharpeners,
     tags: ['Pencil Sharpener', 'Sharpener with Bin', 'Stationery'],
   },
   {
@@ -513,7 +517,7 @@ export const productsData: ProductItem[] = [
     description: 'Super soft latex-free white vinyl rubber erasers for clean graphite erasing without tearing paper or leaving dust mess.',
     inStock: true,
     rating: 4.9,
-    image: '/images/erasers.jpg',
+    image: regeneratedImageErasers,
     tags: ['Eraser', 'Dust Free Eraser', 'Rubber Eraser', 'Pencil Eraser'],
   },
   {
@@ -525,7 +529,7 @@ export const productsData: ProductItem[] = [
     description: 'Assorted pack of 4 vibrant shades (Black, Blue, Red, Green) low-odor, quick-drying bullet tip markers for whiteboards and permanent marking.',
     inStock: true,
     rating: 4.9,
-    image: '/images/markers.jpg',
+    image: regeneratedImageMarkers,
     tags: ['Markers', 'Whiteboard Marker', 'Permanent Marker', 'Camlin Marker', 'Marker Pens'],
   },
   {
@@ -537,22 +541,9 @@ export const productsData: ProductItem[] = [
     description: 'Large angled 12-digit LCD display electronic desktop calculator with dual solar/battery power, memory keys, auto power-off, and grand total function.',
     inStock: true,
     rating: 4.9,
-    image: '/images/calculator.jpg',
+    image: regeneratedImageCalculator,
     tags: ['Calculator', 'Desktop Calculator', 'Electronic Calculator', '12 Digit Calculator'],
   },
-  {
-    id: 'dustless-chalk-slate-pencils-combo',
-    name: 'Dustless Chalk Pieces & Natural Slate Pencils Pack',
-    category: 'Stationery Essentials',
-    price: 45,
-    originalPrice: 60,
-    description: 'Combined set featuring non-toxic dustless white and colored chalk sticks along with traditional natural stone white slate pencils for blackboards and slates.',
-    inStock: true,
-    rating: 4.8,
-    image: '/images/chalk_slate_pencils.jpg',
-    tags: ['Chalk', 'Chalk Pieces', 'Slate Pencil', 'Slate Pencils', 'Dustless Chalk', 'Blackboard Chalk', 'Stone Pencil'],
-  },
-
   {
     id: 'craft-office-scissors',
     name: 'Multi-Purpose Stainless Steel Craft & Office Scissors',
@@ -579,7 +570,7 @@ export const productsData: ProductItem[] = [
   },
   {
     id: 'poster-acrylic-colour-paints',
-    name: 'Rich Pigment Poster & Acrylic Colour Paints Set with Brushes',
+    name: 'Acrylic paints and Brushes set',
     category: 'Art & Craft',
     price: 160,
     originalPrice: 200,
@@ -647,7 +638,7 @@ export const galleryData: GalleryItem[] = [
     id: 'gal-1',
     title: 'Store Showcase & Stationery Shelves',
     category: 'Store',
-    image: '/images/digital_services_desk.jpg',
+    image: '/images/digital_services_desk.jpg?v=2',
     caption: 'Neatly organized aisles featuring notebooks, art kits, pens, and office essentials.',
   },
   {

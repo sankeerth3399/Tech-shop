@@ -45,7 +45,7 @@ export const AboutSection: React.FC = () => {
           >
             <div className="relative rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 shadow-xl">
               <img
-                src="/images/digital_services_desk.jpg"
+                src="/images/digital_services_desk.jpg?v=2"
                 alt="Sri Sai Rama Stationary Shop Interior"
                 referrerPolicy="no-referrer"
                 className="w-full h-[420px] object-cover"

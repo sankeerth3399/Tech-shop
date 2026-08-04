@@ -83,12 +83,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, activeSection }) =
             </div>
             <div>
               <span
-                className={`font-extrabold tracking-tight bg-gradient-to-r from-blue-700 via-indigo-600 to-amber-600 dark:from-blue-400 dark:via-indigo-300 dark:to-amber-400 bg-clip-text text-transparent flex items-center gap-1.5 transition-all duration-300 ${
+                className={`font-extrabold tracking-tight bg-gradient-to-r from-blue-700 via-indigo-600 to-amber-600 dark:from-blue-400 dark:via-indigo-300 dark:to-amber-400 bg-clip-text text-transparent flex items-center gap-1.5 whitespace-nowrap transition-all duration-300 ${
                   isScrolled ? 'text-base sm:text-lg' : 'text-lg sm:text-xl'
                 }`}
               >
                 Sri Sai Rama
-                <span className="text-[10px] sm:text-xs px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold shadow-xs">
+                <span className="text-xs sm:text-sm px-2 py-0.5 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white font-bold shadow-xs whitespace-nowrap">
                   Stationary
                 </span>
               </span>
