@@ -25,10 +25,10 @@ import { ChatMessage } from '../types';
 const SUGGESTED_QUESTIONS = [
   'What are your store operating hours & address?',
   'Can I send documents on WhatsApp for instant printouts?',
-  'Do you have Graph Books, Papers, and CD/DVD discs in stock?',
   'What digital & government online services (Aadhaar/PAN) do you offer?',
-  'Do you have A4 paper reams, notebooks & story books in stock?',
-  'What are your Xerox, printing & project binding rates?'
+  'Do you have A4 paper reams, notebooks & stationery in stock?',
+  'What are your Xerox, printing & project binding rates?',
+  'Do you sell Chandtara slate pencils and non-dust chalks?'
 ];
 
 export const AIChatbotSection: React.FC = () => {

@@ -2,8 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, Award, HeartHandshake, Zap, Users, CheckCircle, MapPin, Building2 } from 'lucide-react';
 import { businessInfo } from '../data/storeData';
-
-const aboutImage = '/images/regenerated_image_1785920989098.png';
+import aboutImage from '../assets/images/regenerated_image_1785920989098.jpg';
 
 export const AboutSection: React.FC = () => {
   const stats = [

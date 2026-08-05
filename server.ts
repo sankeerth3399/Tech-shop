@@ -5,7 +5,7 @@ import { STORE_SYSTEM_INSTRUCTION, getLocalKnowledgeResponse } from './src/data/
 
 async function startServer() {
   const app = express();
-  const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
+  const PORT = 3000;
 
   app.use(express.json());
 
@@ -68,8 +68,24 @@ async function startServer() {
           if (response.text) {
             aiReplyText = response.text;
           }
-        } catch {
-          console.log('Gemini API call unavailable, serving store knowledge base response.');
+        } catch (flashErr) {
+          try {
+            const chatPro = ai.chats.create({
+              model: 'gemini-2.5-pro',
+              config: {
+                systemInstruction: STORE_SYSTEM_INSTRUCTION,
+                temperature: 0.7,
+              },
+              history: formattedHistory,
+            });
+
+            const response = await chatPro.sendMessage({ message });
+            if (response.text) {
+              aiReplyText = response.text;
+            }
+          } catch (proErr) {
+            console.log('Gemini model calls unavailable, serving local knowledge base.');
+          }
         }
 
         if (aiReplyText) {

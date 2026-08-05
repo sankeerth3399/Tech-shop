@@ -3,14 +3,76 @@ import { motion, AnimatePresence } from 'motion/react';
 import { MessageSquare, CheckCircle2, X, Search, Tag, Filter } from 'lucide-react';
 import { ProductItem } from '../types';
 import { productsData, getWhatsAppLink } from '../data/storeData';
+import regeneratedImagePens from '../assets/images/regenerated_image_1785851341624.jpg';
+import regeneratedImagePencils from '../assets/images/regenerated_image_1785851502909.jpg';
+import regeneratedImageParker from '../assets/images/regenerated_image_1785851811413.jpg';
+import regeneratedImagePaper from '../assets/images/regenerated_image_1785851815528.jpg';
+import regeneratedImageStapler from '../assets/images/regenerated_image_1785851817901.jpg';
+import regeneratedImageNotebooks from '../assets/images/regenerated_image_1785851937407.jpg';
+import regeneratedImageHighlighters from '../assets/images/regenerated_image_1785852497215.jpg';
+import regeneratedImageWhitener from '../assets/images/regenerated_image_1785852501604.jpg';
+import regeneratedImageCrayons from '../assets/images/regenerated_image_1785852504467.jpg';
+import regeneratedImageExamPad from '../assets/images/regenerated_image_1785856362462.jpg';
+import regeneratedImageAdhesiveTapes from '../assets/images/regenerated_image_1785853554896.jpg';
+import regeneratedImageColourPapers from '../assets/images/regenerated_image_1785853781419.jpg';
+import regeneratedImageFilesFolders from '../assets/images/regenerated_image_1785853777456.jpg';
+import regeneratedImageCardboard from '../assets/images/regenerated_image_1785856364828.jpg';
+import regeneratedImageStickPens from '../assets/images/regenerated_image_1785856864330.jpg';
+import regeneratedImageLiquidGlue from '../assets/images/regenerated_image_1785857897289.jpg';
+import regeneratedImageGlueSticks from '../assets/images/regenerated_image_1785857900551.jpg';
+import regeneratedImageGeometryBox from '../assets/images/regenerated_image_1785857892253.jpg';
+import regeneratedImagePencilBoxes from '../assets/images/regenerated_image_1785859697389.jpg';
+import regeneratedImagePencilPouches from '../assets/images/regenerated_image_1785860268223.jpg';
+import regeneratedImageThermocol from '../assets/images/regenerated_image_1785860745992.jpg';
+import regeneratedImageWhiteboard from '../assets/images/regenerated_image_1785860747991.jpg';
+import regeneratedImageBookCovers from '../assets/images/regenerated_image_1785860752463.jpg';
+import regeneratedImageCourierEnvelopes from '../assets/images/regenerated_image_1785861106784.jpg';
+import regeneratedImageSharpeners from '../assets/images/regenerated_image_1785861107998.jpg';
+import regeneratedImageErasers from '../assets/images/regenerated_image_1785861112971.jpg';
+import regeneratedImageMarkers from '../assets/images/regenerated_image_1785861281169.jpg';
+import regeneratedImageCalculator from '../assets/images/regenerated_image_1785861286416.jpg';
 
 const FALLBACK_PRODUCT_IMAGE = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800';
+
+const UNSPLASH_PRODUCT_PLACEHOLDERS: Record<string, string> = {
+  'notebooks': regeneratedImageNotebooks,
+  'pencils': regeneratedImagePencils,
+  'pens': regeneratedImagePens,
+  'parker-gift-pen': regeneratedImageParker,
+  'a4-paper-ream': regeneratedImagePaper,
+  'heavy-duty-stapler-pin-set': regeneratedImageStapler,
+  'textliner-highlighters': regeneratedImageHighlighters,
+  'whitener-correction-pen': regeneratedImageWhitener,
+  'smooth-crayons-box': regeneratedImageCrayons,
+  'a4-colour-papers-pack': regeneratedImageColourPapers,
+  'exam-pad-writing-board': regeneratedImageExamPad,
+  'colour-pencils-set': regeneratedImageStickPens,
+  'files-and-folders-set': regeneratedImageFilesFolders,
+  'adhesive-tapes-pack': regeneratedImageAdhesiveTapes,
+  'liquid-craft-glue': regeneratedImageLiquidGlue,
+  'smooth-glue-sticks-set': regeneratedImageGlueSticks,
+  'pencil-boxes-set': regeneratedImagePencilBoxes,
+  'zipper-pencil-pouches': regeneratedImagePencilPouches,
+  'mathematical-geometry-box': regeneratedImageGeometryBox,
+  'cardboard-sheets': regeneratedImageCardboard,
+  'thermocol-sheets-pack': regeneratedImageThermocol,
+  'white-boards-marker-set': regeneratedImageWhiteboard,
+  'notebook-book-covers': regeneratedImageBookCovers,
+  'courier-envelopes': regeneratedImageCourierEnvelopes,
+  'dual-hole-sharpeners': regeneratedImageSharpeners,
+  'dust-free-erasers-pack': regeneratedImageErasers,
+  'permanent-whiteboard-markers': regeneratedImageMarkers,
+  'standard-desktop-calculator': regeneratedImageCalculator,
+  'craft-office-scissors': 'https://images.unsplash.com/photo-1503792501406-2c40da09e1e2?auto=format&fit=crop&q=80&w=800',
+  'playing-cards-deck': 'https://images.unsplash.com/photo-1511193311914-0346f16efe90?auto=format&fit=crop&q=80&w=800',
+  'poster-acrylic-colour-paints': 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800',
+};
 
 const getProductImageUrl = (product: ProductItem): string => {
   if (product.image && product.image.trim().length > 0) {
     return product.image;
   }
-  return FALLBACK_PRODUCT_IMAGE;
+  return UNSPLASH_PRODUCT_PLACEHOLDERS[product.id] || FALLBACK_PRODUCT_IMAGE;
 };
 
 const containerVariants = {
@@ -209,7 +271,7 @@ export const ProductsSection: React.FC = () => {
                   alt={selectedProduct.name}
                   referrerPolicy="no-referrer"
                   onError={(e) => {
-                    (e.target as HTMLImageElement).src = FALLBACK_PRODUCT_IMAGE;
+                    (e.target as HTMLImageElement).src = UNSPLASH_PRODUCT_PLACEHOLDERS[selectedProduct.id] || FALLBACK_PRODUCT_IMAGE;
                   }}
                   className="w-full h-full object-cover"
                 />

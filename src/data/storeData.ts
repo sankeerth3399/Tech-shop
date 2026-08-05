@@ -1,48 +1,47 @@
 import { BusinessInfo, FAQItem, GalleryItem, ProductItem, ServiceItem } from '../types';
+import regeneratedImagePens from '../assets/images/regenerated_image_1785851341624.jpg';
+import regeneratedImagePencils from '../assets/images/regenerated_image_1785851502909.jpg';
+import regeneratedImageParker from '../assets/images/regenerated_image_1785851811413.jpg';
+import regeneratedImagePaper from '../assets/images/regenerated_image_1785851815528.jpg';
+import regeneratedImageStapler from '../assets/images/regenerated_image_1785851817901.jpg';
+import regeneratedImageNotebooks from '../assets/images/regenerated_image_1785851937407.jpg';
+import regeneratedImageHighlighters from '../assets/images/regenerated_image_1785852497215.jpg';
+import regeneratedImageWhitener from '../assets/images/regenerated_image_1785852501604.jpg';
+import regeneratedImageCrayons from '../assets/images/regenerated_image_1785852504467.jpg';
+import regeneratedImageExamPad from '../assets/images/regenerated_image_1785856362462.jpg';
+import regeneratedImageAdhesiveTapes from '../assets/images/regenerated_image_1785853554896.jpg';
+import regeneratedImageColourPapers from '../assets/images/regenerated_image_1785853781419.jpg';
+import regeneratedImageFilesFolders from '../assets/images/regenerated_image_1785853777456.jpg';
+import regeneratedImageCardboard from '../assets/images/regenerated_image_1785856364828.jpg';
+import regeneratedImageStickPens from '../assets/images/regenerated_image_1785856864330.jpg';
+import regeneratedImageLiquidGlue from '../assets/images/regenerated_image_1785857897289.jpg';
+import regeneratedImageGlueSticks from '../assets/images/regenerated_image_1785857900551.jpg';
+import regeneratedImageGeometryBox from '../assets/images/regenerated_image_1785857892253.jpg';
+import regeneratedImagePencilBoxes from '../assets/images/regenerated_image_1785859697389.jpg';
+import regeneratedImagePencilPouches from '../assets/images/regenerated_image_1785860268223.jpg';
+import regeneratedImageThermocol from '../assets/images/regenerated_image_1785860745992.jpg';
+import regeneratedImageWhiteboard from '../assets/images/regenerated_image_1785860747991.jpg';
+import regeneratedImageBookCovers from '../assets/images/regenerated_image_1785860752463.jpg';
+import regeneratedImageCourierEnvelopes from '../assets/images/regenerated_image_1785861106784.jpg';
+import regeneratedImageSharpeners from '../assets/images/regenerated_image_1785861107998.jpg';
+import regeneratedImageErasers from '../assets/images/regenerated_image_1785861112971.jpg';
+import regeneratedImageMarkers from '../assets/images/regenerated_image_1785861281169.jpg';
+import regeneratedImageCalculator from '../assets/images/regenerated_image_1785861286416.jpg';
 
-const regeneratedImagePens = '/images/regenerated_image_1785851341624.jpg';
-const regeneratedImagePencils = '/images/regenerated_image_1785851502909.jpg';
-const regeneratedImageParker = '/images/regenerated_image_1785851811413.jpg';
-const regeneratedImagePaper = '/images/regenerated_image_1785851815528.jpg';
-const regeneratedImageStapler = '/images/regenerated_image_1785851817901.jpg';
-const regeneratedImageNotebooks = '/images/regenerated_image_1785851937407.jpg';
-const regeneratedImageHighlighters = '/images/regenerated_image_1785852497215.jpg';
-const regeneratedImageWhitener = '/images/regenerated_image_1785852501604.jpg';
-const regeneratedImageCrayons = '/images/regenerated_image_1785852504467.jpg';
-const regeneratedImageExamPad = '/images/regenerated_image_1785856362462.jpg';
-const regeneratedImageAdhesiveTapes = '/images/regenerated_image_1785853554896.jpg';
-const regeneratedImageColourPapers = '/images/regenerated_image_1785853781419.jpg';
-const regeneratedImageFilesFolders = '/images/regenerated_image_1785853777456.jpg';
-const regeneratedImageCardboard = '/images/regenerated_image_1785856364828.jpg';
-const regeneratedImageStickPens = '/images/regenerated_image_1785856864330.jpg';
-const regeneratedImageLiquidGlue = '/images/regenerated_image_1785857897289.jpg';
-const regeneratedImageGlueSticks = '/images/regenerated_image_1785857900551.jpg';
-const regeneratedImageGeometryBox = '/images/regenerated_image_1785857892253.jpg';
-const regeneratedImagePencilBoxes = '/images/regenerated_image_1785859697389.jpg';
-const regeneratedImagePencilPouches = '/images/regenerated_image_1785860268223.jpg';
-const regeneratedImageThermocol = '/images/regenerated_image_1785860745992.jpg';
-const regeneratedImageWhiteboard = '/images/regenerated_image_1785860747991.jpg';
-const regeneratedImageBookCovers = '/images/regenerated_image_1785860752463.jpg';
-const regeneratedImageCourierEnvelopes = '/images/regenerated_image_1785861106784.jpg';
-const regeneratedImageSharpeners = '/images/regenerated_image_1785861107998.jpg';
-const regeneratedImageErasers = '/images/regenerated_image_1785861112971.jpg';
-const regeneratedImageMarkers = '/images/regenerated_image_1785861281169.jpg';
-const regeneratedImageCalculator = '/images/regenerated_image_1785861286416.jpg';
-
-const serviceXeroxImg = '/images/xerox_printing_service_1785741526911.jpg';
-const serviceColorPrintImg = '/images/color_printing_service_1785742193663.jpg';
-const serviceScanningImg = '/images/document_scanning_service_1785742221682.jpg';
-const serviceLaminationImg = '/images/lamination_service_1785742206503.jpg';
-const serviceSpiralBindingImg = '/images/spiral_binding_service_1785741554480.jpg';
-const servicePassportPhotosImg = '/images/passport_photos_service_1785741541647.jpg';
-const serviceDigitalDeskImg = '/images/digital_services_desk_1785399735716.jpg';
-const serviceDigitalFormImg = '/images/digital_form_service_1785742232586.jpg';
-const serviceInkRefillingImg = '/images/regenerated_image_1785900672372.jpg';
-const productGiftShelfWrappingImg = '/images/regenerated_image_1785917724796.png';
-const productBubbleWrapImg = '/images/regenerated_image_1785919207892.jpg';
-const productStoryColouringBooksImg = '/images/regenerated_image_1785919853155.jpg';
-const productGraphBooksPapersImg = '/images/regenerated_image_1785920148351.jpg';
-const productCdDvdImg = '/images/regenerated_image_1785920363269.jpg';
+import serviceXeroxImg from '../assets/images/xerox_printing_service_1785741526911.jpg';
+import serviceColorPrintImg from '../assets/images/color_printing_service_1785742193663.jpg';
+import serviceScanningImg from '../assets/images/document_scanning_service_1785742221682.jpg';
+import serviceLaminationImg from '../assets/images/lamination_service_1785742206503.jpg';
+import serviceSpiralBindingImg from '../assets/images/spiral_binding_service_1785741554480.jpg';
+import servicePassportPhotosImg from '../assets/images/passport_photos_service_1785741541647.jpg';
+import serviceDigitalDeskImg from '../assets/images/digital_services_desk_1785399735716.jpg';
+import serviceDigitalFormImg from '../assets/images/digital_form_service_1785742232586.jpg';
+import serviceInkRefillingImg from '../assets/images/regenerated_image_1785900672372.jpg';
+import productGiftShelfWrappingImg from '../assets/images/regenerated_image_1785917724796.jpg';
+import productBubbleWrapImg from '../assets/images/regenerated_image_1785919207892.jpg';
+import productStoryColouringBooksImg from '../assets/images/regenerated_image_1785919853155.jpg';
+import productGraphBooksPapersImg from '../assets/images/regenerated_image_1785920148351.jpg';
+import productCdDvdImg from '../assets/images/regenerated_image_1785920363269.jpg';
 
 export const businessInfo: BusinessInfo = {
   name: 'Sri Sai Rama Stationary',
@@ -679,8 +678,8 @@ export const faqsData: FAQItem[] = [
   },
   {
     id: 'faq-4',
-    question: 'How can I inquire about options for A4 Xerox and Color Printing?',
-    answer: 'You can inquire about paper choices, single/double sided printing, and bulk order options by contacting us directly on WhatsApp (+91 9866094840) or visiting our counter in Ayyappa Colony, Dammaiguda!',
+    question: 'What is the cost for A4 Xerox and Color Printing?',
+    answer: 'We offer the most competitive rates in Dammaiguda! Single-side B&W Xerox starts at nominal rates with special discounts for bulk copying (100+ pages). Color printing rates depend on page coverage and paper thickness (75 GSM vs 210 GSM photo glossy).',
     category: 'Xerox & Print',
   },
   {
@@ -698,7 +697,7 @@ export const faqsData: FAQItem[] = [
   {
     id: 'faq-7',
     question: 'Do you sell branded school stationery and calculators in bulk for schools/offices?',
-    answer: 'Absolutely! We stock leading brands like Classmate, Reynolds, Casio, Faber-Castell, JK Paper, Kangaro, and Camel. We provide special bulk discounts and custom supplies for schools, tutorial institutes, and corporate offices in Dammaiguda.',
+    answer: 'Absolutely! We stock leading brands like Classmate, Reynolds, Casio, Faber-Castell, JK Paper, Kangaro, and Camel. We provide special wholesale discount rates for schools, tutorial institutes, and corporate offices in Dammaiguda.',
     category: 'General',
   },
   {
