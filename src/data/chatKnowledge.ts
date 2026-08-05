@@ -1,45 +1,93 @@
-export const STORE_SYSTEM_INSTRUCTION = `
-You are "Sri Assistant" - the polite, highly knowledgeable, and friendly AI Customer Support Specialist for **Sri Sai Rama Stationary & Digital Services** (also known as Sri Vigneshwara Stationery & Digital Services) located in Ayyappa Colony, Dammaiguda, Hyderabad.
+import { businessInfo, servicesData, productsData, faqsData } from './storeData';
 
-### STORE IDENTIFICATION & LOCATION:
-- **Store Name**: Sri Sai Rama Stationary & Digital Services (Sri Vigneshwara Stationery & Digital Services)
-- **Tagline**: Your One-Stop Destination for Stationery, Office Supplies, Printing, Photocopy & Digital Online Services in Dammaiguda
-- **Full Address**: Plot No. 1, Ayyappa Colony, Dammaiguda, Hyderabad, Secunderabad, Telangana - 500083
-- **Phone / Call**: +91 9866094840
-- **WhatsApp Direct Print & Support**: +91 9866094840
-- **Email**: techshop.3699@gmail.com
-- **Operating Hours**: 9:00 AM to 10:00 PM (Open All 7 Days a Week, Monday through Sunday)
+// Generate dynamic, exhaustive system instruction based on the actual store catalog
+const generateSystemInstruction = (): string => {
+  const servicesListFormatted = servicesData
+    .map(
+      (s, idx) =>
+        `${idx + 1}. **${s.title}** (${s.category.toUpperCase()})
+   - **Description**: ${s.description}
+   - **Estimated Time**: ${s.estimatedTime}
+   - **Key Highlights**: ${s.highlights.join(', ')}`
+    )
+    .join('\n\n');
 
-### CORE SERVICES & DIGITAL OFFERINGS:
-1. **Xerox & Photocopying**: High-speed B&W photostat copies, vibrant color copies, double-sided printing, booklet printing, and double-sided ID card copying.
-2. **Color & B/W Printing**: HD digital printing directly from WhatsApp, Email, Pen Drive, or Mobile. Perfect for project reports, certificates, resumes, assignment printouts.
-3. **Aadhaar & Government Online Services**: Aadhaar address/mobile updates, durable plastic PVC card printing, PAN card new applications & corrections, Voter ID, Ration Card, Income & Caste certificates, Meeseva digital online applications.
-4. **Passport Size Photos**: Instant glossy/matte passport photos (8, 16, or 32 copies) ready in 5 minutes with background color customization.
-5. **Lamination & Document Protection**: Quick pouch hot lamination for certificates, ID cards, driving licenses, mark sheets, and important documents.
-6. **Project & Book Binding**: Spiral binding, soft cover thermal binding, and hard project report binding with golden/silver embossing for school, college, and university projects.
-7. **Document Scanning**: High-resolution multi-page PDF scanning sent directly to your WhatsApp or Email.
+  const productsListFormatted = productsData
+    .map(
+      (p, idx) =>
+        `${idx + 1}. **${p.name}** [ID: ${p.id}]
+   - **Category**: ${p.category}
+   - **Status**: ${p.inStock ? 'In Stock' : 'Out of Stock'}
+   - **Rating**: ⭐ ${p.rating}
+   - **Description**: ${p.description}
+   - **Tags/Keywords**: ${p.tags.join(', ')}`
+    )
+    .join('\n\n');
 
-### PRODUCTS & INVENTORY IN STORE:
-- **Notebooks & Registers**: Classmate long books, practical record books, drawing pads, graph papers, single/double line notebooks, assignment sheets, accounts registers, project sheets.
-- **Pens & Writing Instruments**: Gel pens, ballpoint pens, Parker gift pens, fountain pens, mechanical pencils (0.5mm / 0.7mm), wooden HB pencils, highlighters, permanent markers, whiteboard markers.
-- **Paper & Envelopes**: JK Copier A4 paper reams (75/80 GSM), Legal size paper reams, Chart paper (all colors), Thermocol sheets, Cardboard sheets, Courier covers, Envelopes.
-- **Calculators & Math Kits**: Scientific calculators (Casio / Orpat), financial calculators, geometry boxes, compass sets, rulers, protractors.
-- **Chalk & Slate Pencils**: Chandtara white slate pencils, color slate pencils, natural slate stone pencils, non-dust white chalks, multi-color chalks, student writing slates.
-- **Adhesives & Office Essentials**: Fevicol liquid glue, Glue sticks, Fevikwik, clear cello tape, double-sided foam tape, brown packaging tape, staplers, staple pins, punchers, stamp pads, erasers, sharpeners, exam clipboards, correction whitener pens.
-- **Art & Craft**: Wax crayons, oil pastels, color pencils, sketch pens, water colors, craft sheets, drawing books.
+  const faqsFormatted = faqsData
+    .map((f, idx) => `Q${idx + 1}: ${f.question}\nA: ${f.answer}`)
+    .join('\n\n');
 
-### ORDERING & CUSTOMER CONVENIENCE:
-- **WhatsApp Direct Print**: Send PDFs or images on WhatsApp (+91 9866094840) to have printouts ready for instant pickup.
-- **Payments Accepted**: PhonePe, Google Pay, Paytm, UPI, Debit/Credit Cards, and Cash.
-- **Bulk & Office Orders**: Special discounted rates available on A4 paper reams, event stationery, and office registers.
+  return `
+You are "Sri Assistant" - the polite, highly knowledgeable, helpful, and friendly AI Customer Support Specialist for **${businessInfo.name}** located in Ayyappa Colony, Dammaiguda, Hyderabad.
 
-### RESPONSE GUIDELINES:
-1. Provide complete, polite, and detailed answers to every customer query regarding our products, prices, services, timings, location, and WhatsApp ordering.
-2. Maintain a warm, welcoming tone with clear formatting, helpful bullet points, and actionable advice (such as inviting them to visit or message on WhatsApp at +91 9866094840).
+### STORE IDENTIFICATION & CONTACT INFORMATION:
+- **Store Name**: ${businessInfo.name}
+- **Tagline**: ${businessInfo.tagline}
+- **Full Address**: ${businessInfo.address.full}
+- **Phone / Direct Call**: ${businessInfo.phoneFormatted}
+- **WhatsApp Direct Printing & Support**: ${businessInfo.phoneFormatted} (${businessInfo.whatsappNumber})
+- **Email**: ${businessInfo.email}
+- **Operating Hours**: ${businessInfo.hours.weekdays}
+- **Store Status**: ${businessInfo.hours.status}
+
+### FULL CATALOG OF SERVICES OFFERED (${servicesData.length} Services):
+${servicesListFormatted}
+
+### FULL CATALOG OF PRODUCTS IN STOCK (${productsData.length} Products):
+${productsListFormatted}
+
+### FREQUENTLY ASKED QUESTIONS & ANSWERS:
+${faqsFormatted}
+
+### ORDERING & CONVENIENCE FEATURES:
+- **WhatsApp Direct Print**: Customers can send PDFs, Word documents, images, or files directly to WhatsApp at **${businessInfo.phoneFormatted}** with print requirements (B&W or Color, single/double sided, page count), and pick up their printouts instantly upon arrival!
+- **Payments Accepted**: PhonePe, Google Pay, Paytm, UPI (QR code at counter), Cash, Debit/Credit Cards.
+- **Bulk & Office Orders**: Custom supplies available for paper reams, event stationery, school books, and office supplies.
+
+### AI ASSISTANT BEHAVIOR & RESPONSE GUIDELINES:
+1. Always be welcoming, polite, and helpful. Use clear markdown formatting (**bold text**, bullet points, emojis where appropriate).
+2. **STRICT PRICE POLICY**: DO NOT display, state, or quote any exact numeric prices, rates, costs, or MRPs for any products or services. If a customer asks about prices, rates, or costs, kindly ask them to contact us directly on WhatsApp at **${businessInfo.phoneFormatted}** or visit our store counter in Ayyappa Colony, Dammaiguda for the latest rates and custom quotes.
+3. When asked about a product or service, provide accurate details such as features, highlights, specifications, and stock availability.
+4. If a customer inquires about printing, xerox, binding, or documents, encourage them to send their files to WhatsApp at **${businessInfo.phoneFormatted}** for quick printout & pickup!
+5. If a customer asks for store hours, location, or contact info, share the exact address (${businessInfo.address.full}) and phone number (${businessInfo.phoneFormatted}).
+6. Keep answers clear, friendly, and structured.
 `;
+};
+
+export const STORE_SYSTEM_INSTRUCTION = generateSystemInstruction();
 
 export function getLocalKnowledgeResponse(userMessage: string): string {
   const query = userMessage.toLowerCase().trim();
+
+  if (!query) {
+    return `Hello! Welcome to **${businessInfo.name}**. How can I help you with our stationery products or digital services today?`;
+  }
+
+  // Check for pricing/rates inquiries explicitly
+  if (
+    query.includes('price') ||
+    query.includes('rate') ||
+    query.includes('cost') ||
+    query.includes('charge') ||
+    query.includes('how much') ||
+    query.includes('mrp') ||
+    query.includes('amount') ||
+    query.includes('fee') ||
+    query.includes('discount')
+  ) {
+    return `**Product & Service Rates** 🏷️\n\nFor current rates, bulk discounts, and custom pricing on stationery items, Xerox copies, printing, binding, or passport photos, please get in touch with us directly:\n\n- 💬 **WhatsApp**: Message us at **${businessInfo.phoneFormatted}**\n- 📞 **Phone**: Call **${businessInfo.phoneFormatted}**\n- 📍 **Store Visit**: ${businessInfo.address.colony}, Dammaiguda\n\nWe will be glad to share the latest rates and assist with your order!`;
+  }
 
   // 1. Greetings & Courtesy
   if (
@@ -54,7 +102,7 @@ export function getLocalKnowledgeResponse(userMessage: string): string {
     query.includes('namaste') ||
     query.includes('who are you')
   ) {
-    return `Hello! 👋 Welcome to **Sri Sai Rama Stationary & Digital Services** in Dammaiguda!\n\nI am **Sri Assistant**, your 24/7 AI customer support assistant. How can I help you today?\n\n- 🏪 **Store Hours & Address**: 9 AM – 10 PM in Ayyappa Colony, Dammaiguda\n- 🖨️ **Printing & Xerox**: B&W, Color, Project Binding & Passport Photos\n- 📄 **Government Services**: Aadhaar PVC, PAN Card & Meeseva online forms\n- 📚 **Stationery & Papers**: Notebooks, Pens, A4 Paper Reams, Slate Pencils & Calculators\n- 💬 **WhatsApp Print Service**: Send files to **+91 9866094840** for quick pickup!`;
+    return `Hello! 👋 Welcome to **${businessInfo.name}** in Dammaiguda!\n\nI am **Sri Assistant**, your 24/7 customer support specialist. How can I help you today?\n\n- 🏪 **Store Hours & Address**: ${businessInfo.hours.status} at ${businessInfo.address.full}\n- 🖨️ **Printing & Xerox**: B&W, Color, Project Binding & Passport Photos\n- 📄 **Government Services**: Aadhaar PVC, PAN Card & Meeseva online forms\n- 📚 **Products**: ${productsData.length} items including Notebooks, Pens, A4 Paper Reams, Graph Books & Papers, CD/DVD Discs, Story Books & Slate Pencils\n- 💬 **WhatsApp Print Service**: Send files to **${businessInfo.phoneFormatted}** for quick pickup!`;
   }
 
   // 2. Gratitude & Closings
@@ -68,7 +116,7 @@ export function getLocalKnowledgeResponse(userMessage: string): string {
     query === 'great' ||
     query === 'awesome'
   ) {
-    return `You're most welcome! 😊\n\nIf you need anything else, feel free to visit our store in Ayyappa Colony, Dammaiguda, or send us a message on WhatsApp at **+91 9866094840**. Have a wonderful day!`;
+    return `You're most welcome! 😊\n\nIf you need anything else, feel free to visit our store at ${businessInfo.address.colony}, Dammaiguda, or message us on WhatsApp at **${businessInfo.phoneFormatted}**. Have a wonderful day!`;
   }
 
   // 3. Payment Methods
@@ -84,7 +132,7 @@ export function getLocalKnowledgeResponse(userMessage: string): string {
     query.includes('cash') ||
     query.includes('qr')
   ) {
-    return `**Accepted Payment Methods** 💳📱\n\nAt **Sri Sai Rama Stationary**, we offer flexible payment options for your convenience:\n- 📱 **UPI Payments**: Google Pay, PhonePe, Paytm, and BHIM (QR Code available at counter)\n- 💵 **Cash**: Cash payments accepted\n- 💳 **Cards**: Debit & Credit Card payments accepted\n\nFeel free to complete your payment in-store or digitally for WhatsApp print orders!`;
+    return `**Accepted Payment Methods** 💳📱\n\nAt **${businessInfo.name}**, we accept:\n- 📱 **UPI Payments**: Google Pay, PhonePe, Paytm, BHIM (QR Code at counter)\n- 💵 **Cash**: Accepted at store counter\n- 💳 **Cards**: Debit & Credit Cards accepted\n\nFeel free to complete payments in-store or digitally for WhatsApp print orders!`;
   }
 
   // 4. Contact Details & Phone / Email
@@ -98,7 +146,7 @@ export function getLocalKnowledgeResponse(userMessage: string): string {
     query.includes('mail') ||
     query.includes('reach')
   ) {
-    return `**Store Contact Details** 📞📧\n\n- 📞 **Phone Call**: +91 9866094840\n- 💬 **WhatsApp Support & Printing**: +91 9866094840\n- ✉️ **Email**: techshop.3699@gmail.com\n- 📍 **Location**: Plot No. 1, Ayyappa Colony, Dammaiguda, Hyderabad, Telangana - 500083\n- ⏰ **Timings**: 9:00 AM to 10:00 PM (Open 7 days a week)`;
+    return `**Store Contact Details** 📞📧\n\n- 📞 **Phone Call**: ${businessInfo.phoneFormatted}\n- 💬 **WhatsApp Printing & Support**: ${businessInfo.phoneFormatted}\n- ✉️ **Email**: ${businessInfo.email}\n- 📍 **Location**: ${businessInfo.address.full}\n- ⏰ **Timings**: ${businessInfo.hours.weekdays}`;
   }
 
   // 5. Timings & Working Hours
@@ -113,7 +161,7 @@ export function getLocalKnowledgeResponse(userMessage: string): string {
     query.includes('schedule') ||
     query.includes('working')
   ) {
-    return `**Store Operating Hours** ⏰\n\n- **Opening Time**: 9:00 AM\n- **Closing Time**: 10:00 PM\n- **Operating Days**: Open All 7 Days a Week (Monday through Sunday)\n\nWe are open every day to serve all your stationery, printing, and digital online application needs in Dammaiguda!`;
+    return `**Store Operating Hours** ⏰\n\n- **Weekdays & Saturday**: ${businessInfo.hours.weekdays}\n- **Sunday**: ${businessInfo.hours.sunday}\n- **Current Status**: ${businessInfo.hours.status}\n- **Location**: ${businessInfo.address.colony}, Dammaiguda\n\nWe are open every day to fulfill all your stationery, printing, and digital online application needs!`;
   }
 
   // 6. Location, Address & Directions
@@ -130,7 +178,7 @@ export function getLocalKnowledgeResponse(userMessage: string): string {
     query.includes('near') ||
     query.includes('route')
   ) {
-    return `**Store Address & Directions** 📍\n\n**Sri Sai Rama Stationary & Digital Services**\nPlot No. 1, Ayyappa Colony, Dammaiguda,\nHyderabad, Secunderabad, Telangana - 500083\n\n📍 **Landmark**: Conveniently located in Ayyappa Colony main road, Dammaiguda.\n📞 **Phone/WhatsApp**: +91 9866094840`;
+    return `**Store Address & Directions** 📍\n\n**${businessInfo.name}**\n${businessInfo.address.full}\n\n📞 **Phone / WhatsApp**: ${businessInfo.phoneFormatted}`;
   }
 
   // 7. WhatsApp Direct Print Service
@@ -142,201 +190,59 @@ export function getLocalKnowledgeResponse(userMessage: string): string {
     query.includes('send file') ||
     query.includes('document')
   ) {
-    return `**WhatsApp Direct Print Service** 📱🖨️\n\nSave time by sending your documents directly to our WhatsApp:\n👉 **+91 9866094840**\n\n**How it works**:\n1. Send your PDF, image, or document to **+91 9866094840**.\n2. Mention requirements: B&W or Color, single/double sided, and copy count.\n3. We will print them out so your order is ready when you arrive!`;
+    return `**WhatsApp Direct Print Service** 📱🖨️\n\nSave time by sending your files directly to our WhatsApp:\n👉 **${businessInfo.phoneFormatted}**\n\n**How it works**:\n1. Send your PDF, Word doc, image, or certificate to **${businessInfo.phoneFormatted}**.\n2. Mention requirements: B&W or Color, single/double sided, and number of copies.\n3. We will print them so your order is ready for instant pickup!`;
   }
 
-  // 8. Xerox & Photocopying
-  if (
-    query.includes('xerox') ||
-    query.includes('photocopy') ||
-    query.includes('photostat') ||
-    query.includes('b&w') ||
-    query.includes('double side') ||
-    query.includes('both side')
-  ) {
-    return `**Xerox & Photocopying Services** 📄🖨️\n\nWe provide high-quality copying at budget prices:\n- **Black & White Xerox**: Clean, crisp high-speed photostats\n- **Color Photocopies**: Vibrant digital color copies\n- **Double-Sided Xerox**: Efficient back-to-back copies\n- **ID Card Copying**: Aadhaar, Voter ID, & Driving License both-side copying on a single sheet\n\nVisit us in Dammaiguda or send files on WhatsApp (+91 9866094840).`;
+  // 8. Search Products catalog dynamically
+  const matchingProducts = productsData.filter((p) => {
+    const nameMatch = p.name.toLowerCase().includes(query);
+    const descMatch = p.description.toLowerCase().includes(query);
+    const categoryMatch = p.category.toLowerCase().includes(query);
+    const tagMatch = p.tags.some((t) => t.toLowerCase().includes(query) || query.includes(t.toLowerCase()));
+    return nameMatch || descMatch || categoryMatch || tagMatch;
+  });
+
+  // 9. Search Services catalog dynamically
+  const matchingServices = servicesData.filter((s) => {
+    const titleMatch = s.title.toLowerCase().includes(query);
+    const descMatch = s.description.toLowerCase().includes(query);
+    const categoryMatch = s.category.toLowerCase().includes(query);
+    const highlightMatch = s.highlights.some((h) => h.toLowerCase().includes(query) || query.includes(h.toLowerCase()));
+    return titleMatch || descMatch || categoryMatch || highlightMatch;
+  });
+
+  if (matchingProducts.length > 0 || matchingServices.length > 0) {
+    let responseText = `Here is what we offer at **${businessInfo.name}** regarding **"${userMessage}"**:\n\n`;
+
+    if (matchingProducts.length > 0) {
+      responseText += `🛍️ **Products Available in Store**:\n`;
+      matchingProducts.slice(0, 4).forEach((p) => {
+        responseText += `• **${p.name}**\n  _${p.description}_\n  Status: ${p.inStock ? '✅ In Stock' : '❌ Out of Stock'}\n\n`;
+      });
+    }
+
+    if (matchingServices.length > 0) {
+      responseText += `🖨️ **Services Offered**:\n`;
+      matchingServices.slice(0, 3).forEach((s) => {
+        responseText += `• **${s.title}** (${s.estimatedTime})\n  _${s.description}_\n  Highlights: ${s.highlights.join(' • ')}\n\n`;
+      });
+    }
+
+    responseText += `📱 Message us on WhatsApp at **${businessInfo.phoneFormatted}** or visit our store in Ayyappa Colony, Dammaiguda to purchase or order!`;
+    return responseText;
   }
 
-  // 9. Color & B/W Printing
-  if (
-    query.includes('print') ||
-    query.includes('printing') ||
-    query.includes('color print') ||
-    query.includes('project report') ||
-    query.includes('assignment') ||
-    query.includes('resume') ||
-    query.includes('certificate print')
-  ) {
-    return `**Digital Printing Services** 🖨️✨\n\nWe offer HD digital printing from WhatsApp, Pen Drive, Email, or Mobile:\n- **Assignment & Project Reports**: B&W and color page printouts\n- **Certificates & Resumes**: Premium paper printing for job applications and academic reports\n- **Glossy & Matte Prints**: High resolution output for diagrams and charts\n\nSend files to **+91 9866094840** on WhatsApp for quick pickup!`;
+  // 10. Search FAQs
+  const matchingFaq = faqsData.find(
+    (f) =>
+      f.question.toLowerCase().includes(query) ||
+      f.answer.toLowerCase().includes(query)
+  );
+
+  if (matchingFaq) {
+    return `**${matchingFaq.question}**\n\n${matchingFaq.answer}\n\nNeed more details? Call or WhatsApp us at **${businessInfo.phoneFormatted}**!`;
   }
 
-  // 10. Project Binding & Thermal / Spiral
-  if (
-    query.includes('bind') ||
-    query.includes('binding') ||
-    query.includes('spiral') ||
-    query.includes('hard cover') ||
-    query.includes('soft cover') ||
-    query.includes('emboss')
-  ) {
-    return `**Project & Book Binding Services** 📚🔖\n\nWe specialize in professional academic and official binding:\n- **Spiral Binding**: Durable plastic spiral coil binding with clear protective front/back sheets\n- **Soft Cover Thermal Binding**: Sleek bound presentation for project reports\n- **Hard Book Binding**: Heavy-duty hardcover project report binding with golden/silver embossing for school, college, and university submissions.`;
-  }
-
-  // 11. Passport Size Photos
-  if (
-    query.includes('passport') ||
-    query.includes('photo') ||
-    query.includes('stamp size') ||
-    query.includes('instant photo')
-  ) {
-    return `**Instant Passport Size Photos** 📸⚡\n\n- **Speed**: Ready in just **5 minutes**!\n- **Options**: Available in packs of 8, 16, or 32 copies\n- **Finish**: Premium glossy or matte photographic paper\n- **Features**: Custom background colors (blue, white, grey) as required for official applications, visas, school admissions, and job forms.`;
-  }
-
-  // 12. Aadhaar & Government Online Services
-  if (
-    query.includes('aadhaar') ||
-    query.includes('pan') ||
-    query.includes('voter') ||
-    query.includes('meeseva') ||
-    query.includes('pvc') ||
-    query.includes('ration') ||
-    query.includes('caste') ||
-    query.includes('income') ||
-    query.includes('government') ||
-    query.includes('online service')
-  ) {
-    return `**Government Online & Digital Services** 🌐📑\n\nWe assist with official digital applications and document services:\n- **Aadhaar Services**: Address / phone updates & durable PVC plastic card printing\n- **PAN Card**: New PAN application, corrections & PVC smart card printing\n- **Voter ID & Ration Card**: Online applications, status tracking & updates\n- **Certificates & Meeseva**: Income, Caste & Residence certificate applications`;
-  }
-
-  // 13. Notebooks, Registers & Exercise Books
-  if (
-    query.includes('notebook') ||
-    query.includes('register') ||
-    query.includes('classmate') ||
-    query.includes('long book') ||
-    query.includes('record book') ||
-    query.includes('drawing book') ||
-    query.includes('graph') ||
-    query.includes('assignment sheet')
-  ) {
-    return `**Notebooks & School Registers** 📚✏️\n\nWe carry top brand exercise books and registers:\n- **Classmate Notebooks**: Long books, short notebooks, single/double line ruling\n- **Practical Records**: Physics, Chemistry & Biology laboratory record books\n- **Drawing Pads & Graph Books**: Premium white paper for art and math\n- **Assignment Sheets**: Punch sheets and project paper bundles`;
-  }
-
-  // 14. Pens, Pencils & Writing Supplies
-  if (
-    query.includes('pen') ||
-    query.includes('pencil') ||
-    query.includes('gel pen') ||
-    query.includes('ball pen') ||
-    query.includes('parker') ||
-    query.includes('fountain') ||
-    query.includes('highlighter') ||
-    query.includes('marker') ||
-    query.includes('mechanical') ||
-    query.includes('lead')
-  ) {
-    return `**Pens, Pencils & Writing Supplies** ✒️✏️\n\n- **Gel & Ballpoint Pens**: Cello, Hauser, Flair, Doms, Pentonic smooth writing pens\n- **Parker Executive Pens**: Premium metallic gift pens in presentation boxes\n- **Pencils**: Wooden HB graphite pencils & precision 0.5mm/0.7mm mechanical pen pencils\n- **Markers & Highlighters**: Neon highlighters, permanent markers & whiteboard markers`;
-  }
-
-  // 15. Paper, Reams & Envelopes
-  if (
-    query.includes('paper') ||
-    query.includes('a4') ||
-    query.includes('jk') ||
-    query.includes('copier') ||
-    query.includes('ream') ||
-    query.includes('legal paper') ||
-    query.includes('chart') ||
-    query.includes('colour paper') ||
-    query.includes('envelope') ||
-    query.includes('cover')
-  ) {
-    return `**Paper Reams, Chart Papers & Covers** 📄📦\n\n- **JK Copier A4 Paper Reams** (75 GSM / 80 GSM - 500 sheets pack)\n- **Legal Size Copier Paper Reams**\n- **Coloured Chart Papers**: All vibrant shades for school projects\n- **Courier Covers & Envelopes**: Cloth-lined envelopes, window covers, and document covers in all sizes`;
-  }
-
-  // 16. Calculators & Geometry Math Kits
-  if (
-    query.includes('calculator') ||
-    query.includes('casio') ||
-    query.includes('orpat') ||
-    query.includes('scientific') ||
-    query.includes('geometry') ||
-    query.includes('compass') ||
-    query.includes('scale') ||
-    query.includes('ruler') ||
-    query.includes('protractor')
-  ) {
-    return `**Calculators & Math Geometry Supplies** 📐🔢\n\n- **Scientific Calculators**: Casio (fx-82MS, fx-991EX) & Orpat engineering calculators\n- **Commercial Desktop Calculators**: 12-digit solar/battery desktop calculators\n- **Geometry Sets**: Doms & Camlin metal compass boxes, scales, set squares & protractors`;
-  }
-
-  // 17. Slate Pencils, Chalks & Slates
-  if (
-    query.includes('slate') ||
-    query.includes('pencil') ||
-    query.includes('chalk') ||
-    query.includes('chandtara') ||
-    query.includes('stone') ||
-    query.includes('dustless')
-  ) {
-    return `**Slate Pencils & Blackboard Chalks** ✏️🧱\n\n- **Chandtara Natural Slate Pencils**: White & colored natural stone slate pencils\n- **Dustless Chalks**: Non-toxic white and multi-color classroom chalk sticks\n- **Writing Slates**: Durable wooden/plastic framed student slates`;
-  }
-
-  // 18. Adhesives, Tapes, Whitener & Office Tools
-  if (
-    query.includes('fevicol') ||
-    query.includes('glue') ||
-    query.includes('fevikwik') ||
-    query.includes('tape') ||
-    query.includes('stapler') ||
-    query.includes('pin') ||
-    query.includes('whitener') ||
-    query.includes('correction') ||
-    query.includes('puncher') ||
-    query.includes('eraser') ||
-    query.includes('sharpener') ||
-    query.includes('clipboard')
-  ) {
-    return `**Adhesives, Whiteners & Desk Accessories** ✂️📌\n\n- **Adhesives**: Fevicol liquid glue, Glue sticks, Fevikwik instant adhesive\n- **Tapes**: Clear cello tape, double-sided foam tape, brown packaging tape\n- **Correction**: 0.8mm metal tip whitener pens & correction tape rollers\n- **Desk Tools**: Heavy-duty staplers with pins, 2-hole paper punchers, dust-free erasers, sharpeners & exam clipboards`;
-  }
-
-  // 19. Art, Crayons & Colors
-  if (
-    query.includes('crayon') ||
-    query.includes('pastel') ||
-    query.includes('color pencil') ||
-    query.includes('water color') ||
-    query.includes('paint') ||
-    query.includes('drawing') ||
-    query.includes('sketch')
-  ) {
-    return `**Art & Craft Supplies** 🎨🖍️\n\n- **Crayons & Pastels**: Smooth non-smudging wax crayons and oil pastel boxes\n- **Color Pencils**: Doms & Faber-Castell 12/24 shade color pencil sets\n- **Paints & Markers**: Water color cakes, acrylic tubes, sketch pen sets, and drawing sheets`;
-  }
-
-  // 20. Price, Discounts & Wholesale Inquiries
-  if (
-    query.includes('price') ||
-    query.includes('cost') ||
-    query.includes('rate') ||
-    query.includes('discount') ||
-    query.includes('offer') ||
-    query.includes('cheap') ||
-    query.includes('wholesale') ||
-    query.includes('bulk')
-  ) {
-    return `**Affordable Pricing & Bulk Discounts** 🏷️💰\n\nAt **Sri Sai Rama Stationary**, we provide wholesale and retail pricing with attractive discounts:\n- **Paper Reams**: Special bulk rates on JK Copier A4 paper reams\n- **School/Office Orders**: Quantity discounts on notebooks, files, and pens\n- **Printing**: Reduced rates for bulk Xerox and multi-page project printing\n\nContact us on WhatsApp (**+91 9866094840**) for custom quotes on bulk purchases!`;
-  }
-
-  // 21. Delivery & Orders
-  if (
-    query.includes('delivery') ||
-    query.includes('home delivery') ||
-    query.includes('order') ||
-    query.includes('pickup') ||
-    query.includes('ship')
-  ) {
-    return `**Ordering & Pickup Information** 🛍️🚚\n\n- **WhatsApp Pickup Order**: Message your required items or print files to **+91 9866094840** and pick them up instantly without waiting!\n- **Local Delivery**: Available for bulk stationery orders in Dammaiguda, Ayyappa Colony, and nearby areas.\n- **Store Visit**: Walk into our store between 9:00 AM and 10:00 PM every day!`;
-  }
-
-  // Default intelligent response for any other customer question
-  return `**Sri Sai Rama Stationary & Digital Services** 🛍️\n\nThank you for reaching out! Here is how we can assist you:\n\n- 📍 **Store Location**: Plot No. 1, Ayyappa Colony, Dammaiguda, Hyderabad (9 AM – 10 PM daily)\n- 📞 **Phone / WhatsApp**: **+91 9866094840**\n- 🖨️ **Services**: Xerox, Color Printing, Hard/Spiral Binding, Passport Photos, Lamination, Scanning\n- 📄 **Government Online Services**: Aadhaar address update/PVC, PAN Card, Voter ID & Meeseva forms\n- 📚 **Products**: Classmate Notebooks, Pens, A4 Paper Reams, Casio Calculators, Chandtara Slate Pencils, Crayons & Office Stationery\n\nPlease feel free to ask any specific question or message us on WhatsApp at **+91 9866094840**!`;
+  // Default intelligent response listing main highlights & products
+  return `**${businessInfo.name}** 🛍️\n\nThank you for asking! We have a complete range of stationery products and digital services:\n\n- 📍 **Location**: ${businessInfo.address.colony}, Dammaiguda (${businessInfo.hours.status})\n- 📞 **Phone / WhatsApp**: **${businessInfo.phoneFormatted}**\n- 🖨️ **Services**: Xerox, Color Printing, Spiral/Hard Binding, Passport Photos (5 mins), Lamination, Scanning, Document Typing\n- 📄 **Government Digital Services**: Aadhaar PVC/Address update, PAN Card application/corrections, Voter ID, Meeseva forms\n- 📚 **Popular Products**: Classmate Notebooks, Pens, A4 Paper Reams, Graph Books & Papers, CD/DVD Discs, Story & Colouring Books, Casio Calculators, Chandtara Slate Pencils, Crayons, Whitener Pens, Glue & Craft supplies.\n\nPlease feel free to ask about any specific product or send your print orders to WhatsApp at **${businessInfo.phoneFormatted}**!`;
 }

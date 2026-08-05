@@ -68,24 +68,8 @@ async function startServer() {
           if (response.text) {
             aiReplyText = response.text;
           }
-        } catch (flashErr) {
-          try {
-            const chatPro = ai.chats.create({
-              model: 'gemini-2.5-pro',
-              config: {
-                systemInstruction: STORE_SYSTEM_INSTRUCTION,
-                temperature: 0.7,
-              },
-              history: formattedHistory,
-            });
-
-            const response = await chatPro.sendMessage({ message });
-            if (response.text) {
-              aiReplyText = response.text;
-            }
-          } catch (proErr) {
-            console.log('Gemini model calls unavailable, serving local knowledge base.');
-          }
+        } catch {
+          console.log('Gemini API call unavailable, serving store knowledge base response.');
         }
 
         if (aiReplyText) {

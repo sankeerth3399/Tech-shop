@@ -2,7 +2,21 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, Award, HeartHandshake, Zap, Users, CheckCircle, MapPin, Building2 } from 'lucide-react';
 import { businessInfo } from '../data/storeData';
-import aboutImage from '../assets/images/regenerated_image_1785920989098.png';
+
+const resolveAssetUrl = (path: string): string => {
+  if (typeof window !== 'undefined') {
+    try {
+      if (typeof import.meta !== 'undefined' && import.meta && import.meta.url) {
+        return new URL(path, import.meta.url).href;
+      }
+    } catch {
+      // fallback
+    }
+  }
+  return path;
+};
+
+const aboutImage = resolveAssetUrl('../assets/images/regenerated_image_1785920989098.png');
 
 export const AboutSection: React.FC = () => {
   const stats = [
