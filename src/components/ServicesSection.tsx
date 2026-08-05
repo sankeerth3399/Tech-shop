@@ -119,6 +119,10 @@ export const ServicesSection: React.FC = () => {
                         loading="lazy"
                         decoding="async"
                         referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800';
+                        }}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300 brightness-[0.97] dark:brightness-90"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />

@@ -169,6 +169,10 @@ export const SearchModal: React.FC<SearchModalProps> = ({ isOpen, onClose, initi
                         src={product.image}
                         alt={product.name}
                         referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = 'https://images.unsplash.com/photo-1544716278-ca5e3f4abd8c?auto=format&fit=crop&q=80&w=800';
+                        }}
                         className="w-10 h-10 rounded-xl object-cover shrink-0"
                       />
                       <div>
