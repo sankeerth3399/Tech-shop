@@ -28,27 +28,26 @@ export default function App() {
   const [activeSection, setActiveSection] = useState('hero');
   const [is404, setIs404] = useState(false);
 
-  // ScrollSpy to track active section
+  // ScrollSpy to track active section with IntersectionObserver (zero scroll jank)
   useEffect(() => {
-    const handleScroll = () => {
-      const sections = ['hero', 'services', 'products', 'ai-chat', 'about', 'contact'];
-      const scrollPosition = window.scrollY + 100;
-
-      for (const sectionId of sections) {
-        const el = document.getElementById(sectionId);
-        if (el) {
-          const top = el.offsetTop;
-          const height = el.offsetHeight;
-          if (scrollPosition >= top && scrollPosition < top + height) {
-            setActiveSection(sectionId);
-            break;
+    const sections = ['hero', 'services', 'products', 'ai-chat', 'about', 'contact'];
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
           }
-        }
-      }
-    };
+        });
+      },
+      { rootMargin: '-20% 0px -50% 0px' }
+    );
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, []);
 
   // Ensure page starts at top (Home section) on initial load unless an anchor hash is explicitly provided
@@ -110,9 +109,6 @@ export default function App() {
 
           {/* Services Section */}
           <ServicesSection />
-
-          {/* Document Prep Checklist & PDF Guide Helper */}
-          <DocumentPrepGuide />
 
           {/* Products Catalog */}
           <ProductsSection />

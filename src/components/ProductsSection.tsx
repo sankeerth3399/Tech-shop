@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Star, MessageSquare, CheckCircle2, X, Search, Tag, Filter } from 'lucide-react';
+import { MessageSquare, CheckCircle2, X, Search, Tag, Filter } from 'lucide-react';
 import { ProductItem } from '../types';
 import { productsData, getWhatsAppLink } from '../data/storeData';
 import regeneratedImagePens from '../assets/images/regenerated_image_1785851341624.jpg';
@@ -134,73 +134,10 @@ export const ProductsSection: React.FC = () => {
           transition={{ duration: 0.5, ease: [0.21, 0.47, 0.32, 0.98] }}
           className="text-center max-w-3xl mx-auto space-y-4 mb-10"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-orange-100 dark:bg-orange-950/80 text-orange-700 dark:text-orange-300 font-bold text-xs uppercase tracking-wider">
-            Stationery & Tech Accessories Catalog
-          </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
             Popular <span className="text-orange-500">Products</span> In Stock
           </h2>
-          <p className="text-base text-slate-600 dark:text-slate-300">
-            Browse our top stationery items, school supplies, office registers, A4 paper reams, and tech accessories available for instant store pickup or local home delivery.
-          </p>
         </motion.div>
-
-        {/* Category Tabs & Search Bar */}
-        <div className="max-w-4xl mx-auto mb-10 space-y-4">
-          {/* Search Input */}
-          <div className="relative max-w-md mx-auto">
-            <Search className="w-4 h-4 absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400" />
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search products (e.g. notebooks, pens, glue, A4 paper)..."
-              className="w-full pl-10 pr-9 py-2.5 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200 dark:border-slate-800 text-sm font-medium text-slate-900 dark:text-slate-100 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-orange-500 shadow-sm transition-all"
-            />
-            {searchQuery && (
-              <button
-                onClick={() => setSearchQuery('')}
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200"
-              >
-                <X className="w-4 h-4" />
-              </button>
-            )}
-          </div>
-
-          {/* Category Filter Pills */}
-          <div className="flex flex-wrap items-center justify-center gap-2">
-            {categories.map((cat) => {
-              const isActive = selectedCategory === cat;
-              const count =
-                cat === 'All'
-                  ? productsData.length
-                  : productsData.filter((p) => p.category === cat).length;
-
-              return (
-                <button
-                  key={cat}
-                  onClick={() => setSelectedCategory(cat)}
-                  className={`px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all duration-200 flex items-center gap-1.5 ${
-                    isActive
-                      ? 'bg-orange-500 text-white shadow-md shadow-orange-500/20 scale-105'
-                      : 'bg-white/80 dark:bg-slate-900/80 text-slate-600 dark:text-slate-300 hover:bg-orange-50 dark:hover:bg-slate-800 border border-slate-200/70 dark:border-slate-800'
-                  }`}
-                >
-                  <span>{cat}</span>
-                  <span
-                    className={`text-[10px] px-1.5 py-0.2 rounded-full ${
-                      isActive
-                        ? 'bg-white/20 text-white'
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
-                    }`}
-                  >
-                    {count}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
 
         {/* Product Grid or Empty State */}
         {filteredProducts.length === 0 ? (
@@ -249,10 +186,6 @@ export const ProductsSection: React.FC = () => {
                         }}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       />
-                      <span className="absolute top-3 right-3 bg-white/90 dark:bg-slate-900/90 text-slate-900 dark:text-white text-[11px] font-bold px-2 py-0.5 rounded-md shadow-xs flex items-center gap-1">
-                        <Star className="w-3 h-3 text-amber-400 fill-amber-400" />
-                        <span>{product.rating}</span>
-                      </span>
 
                       {product.inStock && (
                         <span className="absolute top-3 left-3 bg-emerald-600/90 text-white text-[10px] font-bold px-2 py-0.5 rounded-md shadow-xs">
@@ -314,7 +247,7 @@ export const ProductsSection: React.FC = () => {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setSelectedProduct(null)}
-              className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm"
+              className="absolute inset-0 bg-slate-950/80"
             />
             
             <motion.div

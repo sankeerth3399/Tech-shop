@@ -213,7 +213,7 @@ export const AIChatbotSection: React.FC = () => {
   };
 
   return (
-    <section id="ai-chat" className="py-16 sm:py-24 bg-gradient-to-b from-blue-100/40 via-indigo-50/30 to-amber-100/40 dark:from-slate-950/80 dark:via-indigo-950/20 dark:to-slate-950/80 backdrop-blur-xs relative border-t border-indigo-200/50 dark:border-indigo-900/50 transition-colors duration-300">
+    <section id="ai-chat" className="py-16 sm:py-24 bg-gradient-to-b from-blue-100/40 via-indigo-50/30 to-amber-100/40 dark:from-slate-950/80 dark:via-indigo-950/20 dark:to-slate-950/80 relative border-t border-indigo-200/50 dark:border-indigo-900/50 transition-colors duration-300">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

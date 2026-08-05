@@ -112,9 +112,9 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
     <section id="hero" className="relative pt-24 pb-12 md:pt-32 md:pb-20 bg-transparent text-slate-900 dark:text-slate-100 overflow-hidden">
       
       {/* Background Decorative Soft Vibrant Gradients */}
-      <div className="absolute top-0 right-1/4 w-[36rem] h-[36rem] bg-gradient-to-br from-blue-500/20 via-indigo-500/20 to-purple-500/20 rounded-full blur-3xl pointer-events-none animate-pulse" />
-      <div className="absolute bottom-10 left-10 w-[30rem] h-[30rem] bg-gradient-to-tr from-amber-500/20 via-orange-500/20 to-rose-500/20 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-10 w-[24rem] h-[24rem] bg-emerald-500/15 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-0 right-1/4 w-[36rem] h-[36rem] bg-gradient-to-br from-blue-500/15 via-indigo-500/15 to-purple-500/15 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute bottom-10 left-10 w-[30rem] h-[30rem] bg-gradient-to-tr from-amber-500/15 via-orange-500/15 to-rose-500/15 rounded-full blur-2xl pointer-events-none" />
+      <div className="absolute top-1/2 right-10 w-[24rem] h-[24rem] bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 space-y-6">
         
@@ -186,7 +186,7 @@ export const Hero: React.FC<HeroProps> = ({ onSearch, onNavigateToServices }) =>
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.15 }}
-            className="lg:col-span-7 bg-gradient-to-br from-white/95 via-blue-50/70 to-indigo-50/80 dark:from-slate-900/90 dark:via-indigo-950/50 dark:to-slate-900/90 text-slate-900 dark:text-slate-100 rounded-3xl p-8 sm:p-10 border border-blue-200/80 dark:border-indigo-800/60 shadow-xl flex flex-col justify-between relative overflow-hidden backdrop-blur-md"
+            className="lg:col-span-7 bg-gradient-to-br from-white/95 via-blue-50/70 to-indigo-50/80 dark:from-slate-900/90 dark:via-indigo-950/50 dark:to-slate-900/90 text-slate-900 dark:text-slate-100 rounded-3xl p-8 sm:p-10 border border-blue-200/80 dark:border-indigo-800/60 shadow-xl flex flex-col justify-between relative overflow-hidden"
           >
             <div className="absolute top-0 right-0 p-8 opacity-5 dark:opacity-10 pointer-events-none">
               <Sparkles className="w-48 h-48 text-blue-600" />

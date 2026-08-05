@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'motion/react';
 import { ShieldCheck, Award, HeartHandshake, Zap, Users, CheckCircle, MapPin, Building2 } from 'lucide-react';
 import { businessInfo } from '../data/storeData';
-import aboutImage from '../assets/images/digital_services_desk_1785399735716.jpg';
+import aboutImage from '../assets/images/regenerated_image_1785920989098.png';
 
 export const AboutSection: React.FC = () => {
   const stats = [
@@ -31,7 +31,7 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="py-20 bg-gradient-to-b from-purple-100/40 via-indigo-50/30 to-blue-100/40 dark:from-slate-950/80 dark:via-purple-950/20 dark:to-slate-950/80 backdrop-blur-xs relative border-t border-purple-200/50 dark:border-purple-900/50">
+    <section id="about" className="py-20 bg-gradient-to-b from-purple-100/40 via-indigo-50/30 to-blue-100/40 dark:from-slate-950/80 dark:via-purple-950/20 dark:to-slate-950/80 relative border-t border-purple-200/50 dark:border-purple-900/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

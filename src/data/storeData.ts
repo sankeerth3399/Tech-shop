@@ -36,6 +36,12 @@ import serviceSpiralBindingImg from '../assets/images/spiral_binding_service_178
 import servicePassportPhotosImg from '../assets/images/passport_photos_service_1785741541647.jpg';
 import serviceDigitalDeskImg from '../assets/images/digital_services_desk_1785399735716.jpg';
 import serviceDigitalFormImg from '../assets/images/digital_form_service_1785742232586.jpg';
+import serviceInkRefillingImg from '../assets/images/regenerated_image_1785900672372.jpg';
+import productGiftShelfWrappingImg from '../assets/images/regenerated_image_1785917724796.png';
+import productBubbleWrapImg from '../assets/images/regenerated_image_1785919207892.jpg';
+import productStoryColouringBooksImg from '../assets/images/regenerated_image_1785919853155.jpg';
+import productGraphBooksPapersImg from '../assets/images/regenerated_image_1785920148351.jpg';
+import productCdDvdImg from '../assets/images/regenerated_image_1785920363269.jpg';
 
 export const businessInfo: BusinessInfo = {
   name: 'Sri Sai Rama Stationary',
@@ -136,7 +142,7 @@ export const servicesData: ServiceItem[] = [
     category: 'printing',
     description: 'Professional printer ink cartridge and ink bottle refilling with high grade dark black and color dye inks for all major printer brands.',
     iconName: 'Droplet',
-    image: 'https://images.unsplash.com/photo-1612815154858-60aa4c59eaa6?auto=format&fit=crop&q=80&w=800',
+    image: serviceInkRefillingImg,
     badge: 'Cost Saver',
     popular: false,
     estimatedTime: '15 - 20 Minutes',
@@ -588,6 +594,66 @@ export const productsData: ProductItem[] = [
     rating: 4.9,
     image: 'https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&q=80&w=800',
     tags: ['Colour Paints', 'Poster Colours', 'Acrylic Paints', 'Paint Brushes', 'Art Supplies'],
+  },
+  {
+    id: 'decorative-gift-wrapping-paper',
+    name: 'Decorative Gift Wrapping Paper Sheets & Ribbon Set',
+    category: 'Art & Craft',
+    price: 40,
+    originalPrice: 50,
+    description: 'Vibrant printed glossy gift wrapping paper sheets and matching decorative ribbon bows for birthday gifts, festive presents, and party return gifts.',
+    inStock: true,
+    rating: 4.9,
+    image: productGiftShelfWrappingImg,
+    tags: ['Gift Wrapping', 'Wrapping Paper', 'Gift Roll', 'Party Supplies', 'Decorative Paper'],
+  },
+  {
+    id: 'bubble-wrap-shelf-covers',
+    name: 'Bubble Wrap',
+    category: 'Stationery Essentials',
+    price: 90,
+    originalPrice: 120,
+    description: 'High-quality protective cushioning bubble wrap roll for safe packing, fragile item wrapping, shelf covering, and parcel shipping protection.',
+    inStock: true,
+    rating: 4.8,
+    image: productBubbleWrapImg,
+    tags: ['Bubble Wrap', 'Packing Roll', 'Shelf Wrapping', 'Protective Cushioning', 'Parcel Packing'],
+  },
+  {
+    id: 'story-and-colouring-books',
+    name: 'Story and Colouring Books',
+    category: 'Art & Craft',
+    price: 75,
+    originalPrice: 100,
+    description: 'Engaging children story books with moral tales alongside fun activity colouring books set with bold outlines for kids.',
+    inStock: true,
+    rating: 4.9,
+    image: productStoryColouringBooksImg,
+    tags: ['Story Books', 'Colouring Books', 'Kids Books', 'Drawing & Colouring', 'Moral Stories', 'Activity Books'],
+  },
+  {
+    id: 'graph-books-and-papers',
+    name: 'Graph Books and Papers',
+    category: 'Papers & Files',
+    price: 40,
+    originalPrice: 60,
+    description: 'High-quality millimeter grid graph note books bound with durable covers alongside loose mm grid graph paper sheets for school, college, mathematics, physics, engineering, and architectural drawing.',
+    inStock: true,
+    rating: 4.8,
+    image: productGraphBooksPapersImg,
+    tags: ['Graph Books', 'Graph Papers', 'Grid Paper', 'Millimeter Grid', 'Maths Graph', 'Engineering Graph', 'Physics Graph'],
+  },
+  {
+    id: 'cd-and-dvd-discs',
+    name: 'CD and DVD Discs',
+    category: 'Tech Accessories',
+    price: 30,
+    originalPrice: 45,
+    description: 'High-quality recordable CD-R (700MB) and DVD-R (4.7GB) optical storage discs with protective cases for data backup, audio/video recording, and project storage.',
+    inStock: true,
+    rating: 4.7,
+    image: productCdDvdImg,
+    tags: ['CD', 'DVD', 'CD-R', 'DVD-R', 'Blank Disc', 'Data Storage', 'Optical Media', 'Compact Disc'],
   },
 ];
 

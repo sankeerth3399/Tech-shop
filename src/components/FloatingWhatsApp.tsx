@@ -10,14 +10,17 @@ export const FloatingWhatsApp: React.FC = () => {
   const playedSoundRef = useRef(false);
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (window.scrollY > 300) {
-        setShowScrollTop(true);
-      } else {
-        setShowScrollTop(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setShowScrollTop(window.scrollY > 300);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
@@ -241,7 +244,7 @@ export const FloatingWhatsApp: React.FC = () => {
               exit={{ opacity: 0, scale: 0.6, y: 10 }}
               transition={{ type: 'spring', damping: 20, stiffness: 300 }}
               onClick={scrollToTop}
-              className="p-3 sm:p-3.5 rounded-full bg-slate-900/90 dark:bg-slate-800/90 hover:bg-slate-900 text-white dark:text-slate-100 shadow-xl border border-slate-700/60 backdrop-blur-md transition-all hover:scale-105 active:scale-95 flex items-center justify-center"
+              className="p-3 sm:p-3.5 rounded-full bg-slate-900/95 dark:bg-slate-800/95 hover:bg-slate-900 text-white dark:text-slate-100 shadow-xl border border-slate-700/60 transition-all hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer"
               aria-label="Scroll to top"
               title="Back to top"
             >
@@ -252,17 +255,16 @@ export const FloatingWhatsApp: React.FC = () => {
 
         <button
           onClick={handleTogglePopup}
-          className="relative group p-3.5 sm:p-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl shadow-emerald-500/30 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center"
+          className="relative group p-3.5 sm:p-4 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl shadow-emerald-500/30 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center justify-center cursor-pointer"
           aria-label="Chat on WhatsApp"
         >
-          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-30 pointer-events-none" />
           <MessageSquare className="w-5 sm:w-6 h-5 sm:h-6 fill-white" />
           <span className="absolute -top-1 -right-1 w-3.5 h-3.5 bg-red-500 rounded-full border-2 border-white dark:border-slate-900" />
         </button>
       </div>
 
       {/* Mobile Sticky Quick Action Bar */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 border-t border-slate-200 dark:border-slate-800 p-2.5 backdrop-blur-md sm:hidden flex items-center gap-2 shadow-2xl">
+      <div className="fixed bottom-0 left-0 right-0 z-40 bg-white/95 dark:bg-slate-900/95 border-t border-slate-200 dark:border-slate-800 p-2.5 sm:hidden flex items-center gap-2 shadow-2xl">
         <a
           href={`tel:${businessInfo.phone}`}
           className="flex-1 py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white text-xs font-bold flex items-center justify-center gap-1.5 border border-slate-200 dark:border-slate-700"

@@ -15,11 +15,14 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, activeSection }) =
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setIsScrolled(window.scrollY > 20);
+          ticking = false;
+        });
+        ticking = true;
       }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -51,10 +54,10 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSearch, activeSection }) =
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out ${
         isScrolled
-          ? 'bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl shadow-lg shadow-slate-900/5 dark:shadow-slate-950/50 border-b border-slate-200/90 dark:border-slate-800/90 py-2 sm:py-2.5'
-          : 'bg-white/60 dark:bg-slate-950/60 backdrop-blur-md py-4 sm:py-5 border-b border-slate-200/40 dark:border-slate-800/40'
+          ? 'bg-white/95 dark:bg-slate-900/95 shadow-md border-b border-slate-200 dark:border-slate-800 py-2 sm:py-2.5'
+          : 'bg-white/80 dark:bg-slate-950/80 py-3.5 sm:py-4 border-b border-slate-200/50 dark:border-slate-800/50'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
