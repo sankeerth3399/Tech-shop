@@ -1,61 +1,48 @@
 import { BusinessInfo, FAQItem, GalleryItem, ProductItem, ServiceItem } from '../types';
 
-const resolveAssetUrl = (path: string): string => {
-  if (typeof window !== 'undefined') {
-    try {
-      if (typeof import.meta !== 'undefined' && import.meta && import.meta.url) {
-        return new URL(path, import.meta.url).href;
-      }
-    } catch {
-      // fallback
-    }
-  }
-  return path;
-};
+const regeneratedImagePens = '/images/regenerated_image_1785851341624.jpg';
+const regeneratedImagePencils = '/images/regenerated_image_1785851502909.jpg';
+const regeneratedImageParker = '/images/regenerated_image_1785851811413.jpg';
+const regeneratedImagePaper = '/images/regenerated_image_1785851815528.jpg';
+const regeneratedImageStapler = '/images/regenerated_image_1785851817901.jpg';
+const regeneratedImageNotebooks = '/images/regenerated_image_1785851937407.jpg';
+const regeneratedImageHighlighters = '/images/regenerated_image_1785852497215.jpg';
+const regeneratedImageWhitener = '/images/regenerated_image_1785852501604.jpg';
+const regeneratedImageCrayons = '/images/regenerated_image_1785852504467.jpg';
+const regeneratedImageExamPad = '/images/regenerated_image_1785856362462.jpg';
+const regeneratedImageAdhesiveTapes = '/images/regenerated_image_1785853554896.jpg';
+const regeneratedImageColourPapers = '/images/regenerated_image_1785853781419.jpg';
+const regeneratedImageFilesFolders = '/images/regenerated_image_1785853777456.jpg';
+const regeneratedImageCardboard = '/images/regenerated_image_1785856364828.jpg';
+const regeneratedImageStickPens = '/images/regenerated_image_1785856864330.jpg';
+const regeneratedImageLiquidGlue = '/images/regenerated_image_1785857897289.jpg';
+const regeneratedImageGlueSticks = '/images/regenerated_image_1785857900551.jpg';
+const regeneratedImageGeometryBox = '/images/regenerated_image_1785857892253.jpg';
+const regeneratedImagePencilBoxes = '/images/regenerated_image_1785859697389.jpg';
+const regeneratedImagePencilPouches = '/images/regenerated_image_1785860268223.jpg';
+const regeneratedImageThermocol = '/images/regenerated_image_1785860745992.jpg';
+const regeneratedImageWhiteboard = '/images/regenerated_image_1785860747991.jpg';
+const regeneratedImageBookCovers = '/images/regenerated_image_1785860752463.jpg';
+const regeneratedImageCourierEnvelopes = '/images/regenerated_image_1785861106784.jpg';
+const regeneratedImageSharpeners = '/images/regenerated_image_1785861107998.jpg';
+const regeneratedImageErasers = '/images/regenerated_image_1785861112971.jpg';
+const regeneratedImageMarkers = '/images/regenerated_image_1785861281169.jpg';
+const regeneratedImageCalculator = '/images/regenerated_image_1785861286416.jpg';
 
-const regeneratedImagePens = resolveAssetUrl('../assets/images/regenerated_image_1785851341624.jpg');
-const regeneratedImagePencils = resolveAssetUrl('../assets/images/regenerated_image_1785851502909.jpg');
-const regeneratedImageParker = resolveAssetUrl('../assets/images/regenerated_image_1785851811413.jpg');
-const regeneratedImagePaper = resolveAssetUrl('../assets/images/regenerated_image_1785851815528.jpg');
-const regeneratedImageStapler = resolveAssetUrl('../assets/images/regenerated_image_1785851817901.jpg');
-const regeneratedImageNotebooks = resolveAssetUrl('../assets/images/regenerated_image_1785851937407.jpg');
-const regeneratedImageHighlighters = resolveAssetUrl('../assets/images/regenerated_image_1785852497215.jpg');
-const regeneratedImageWhitener = resolveAssetUrl('../assets/images/regenerated_image_1785852501604.jpg');
-const regeneratedImageCrayons = resolveAssetUrl('../assets/images/regenerated_image_1785852504467.jpg');
-const regeneratedImageExamPad = resolveAssetUrl('../assets/images/regenerated_image_1785856362462.jpg');
-const regeneratedImageAdhesiveTapes = resolveAssetUrl('../assets/images/regenerated_image_1785853554896.jpg');
-const regeneratedImageColourPapers = resolveAssetUrl('../assets/images/regenerated_image_1785853781419.jpg');
-const regeneratedImageFilesFolders = resolveAssetUrl('../assets/images/regenerated_image_1785853777456.jpg');
-const regeneratedImageCardboard = resolveAssetUrl('../assets/images/regenerated_image_1785856364828.jpg');
-const regeneratedImageStickPens = resolveAssetUrl('../assets/images/regenerated_image_1785856864330.jpg');
-const regeneratedImageLiquidGlue = resolveAssetUrl('../assets/images/regenerated_image_1785857897289.jpg');
-const regeneratedImageGlueSticks = resolveAssetUrl('../assets/images/regenerated_image_1785857900551.jpg');
-const regeneratedImageGeometryBox = resolveAssetUrl('../assets/images/regenerated_image_1785857892253.jpg');
-const regeneratedImagePencilBoxes = resolveAssetUrl('../assets/images/regenerated_image_1785859697389.jpg');
-const regeneratedImagePencilPouches = resolveAssetUrl('../assets/images/regenerated_image_1785860268223.jpg');
-const regeneratedImageThermocol = resolveAssetUrl('../assets/images/regenerated_image_1785860745992.jpg');
-const regeneratedImageWhiteboard = resolveAssetUrl('../assets/images/regenerated_image_1785860747991.jpg');
-const regeneratedImageBookCovers = resolveAssetUrl('../assets/images/regenerated_image_1785860752463.jpg');
-const regeneratedImageCourierEnvelopes = resolveAssetUrl('../assets/images/regenerated_image_1785861106784.jpg');
-const regeneratedImageSharpeners = resolveAssetUrl('../assets/images/regenerated_image_1785861107998.jpg');
-const regeneratedImageErasers = resolveAssetUrl('../assets/images/regenerated_image_1785861112971.jpg');
-const regeneratedImageMarkers = resolveAssetUrl('../assets/images/regenerated_image_1785861281169.jpg');
-const regeneratedImageCalculator = resolveAssetUrl('../assets/images/regenerated_image_1785861286416.jpg');
-
-const serviceXeroxImg = resolveAssetUrl('../assets/images/xerox_printing_service_1785741526911.jpg');
-const serviceColorPrintImg = resolveAssetUrl('../assets/images/color_printing_service_1785742193663.jpg');
-const serviceScanningImg = resolveAssetUrl('../assets/images/document_scanning_service_1785742221682.jpg');
-const serviceLaminationImg = resolveAssetUrl('../assets/images/lamination_service_1785742206503.jpg');
-const serviceSpiralBindingImg = resolveAssetUrl('../assets/images/spiral_binding_service_1785741554480.jpg');
-const servicePassportPhotosImg = resolveAssetUrl('../assets/images/passport_photos_service_1785741541647.jpg');
-const serviceDigitalDeskImg = resolveAssetUrl('../assets/images/digital_services_desk_1785399735716.jpg');
-const serviceDigitalFormImg = resolveAssetUrl('../assets/images/digital_form_service_1785742232586.jpg');
-const serviceInkRefillingImg = resolveAssetUrl('../assets/images/regenerated_image_1785900672372.jpg');
-const productGiftShelfWrappingImg = resolveAssetUrl('../assets/images/regenerated_image_1785917724796.png');
-const productBubbleWrapImg = resolveAssetUrl('../assets/images/regenerated_image_1785919207892.jpg');
-const productStoryColouringBooksImg = resolveAssetUrl('../assets/images/regenerated_image_1785919853155.jpg');
-const productGraphBooksPapersImg = resolveAssetUrl('../assets/images/regenerated_image_1785920148351.jpg');
-const productCdDvdImg = resolveAssetUrl('../assets/images/regenerated_image_1785920363269.jpg');
+const serviceXeroxImg = '/images/xerox_printing_service_1785741526911.jpg';
+const serviceColorPrintImg = '/images/color_printing_service_1785742193663.jpg';
+const serviceScanningImg = '/images/document_scanning_service_1785742221682.jpg';
+const serviceLaminationImg = '/images/lamination_service_1785742206503.jpg';
+const serviceSpiralBindingImg = '/images/spiral_binding_service_1785741554480.jpg';
+const servicePassportPhotosImg = '/images/passport_photos_service_1785741541647.jpg';
+const serviceDigitalDeskImg = '/images/digital_services_desk_1785399735716.jpg';
+const serviceDigitalFormImg = '/images/digital_form_service_1785742232586.jpg';
+const serviceInkRefillingImg = '/images/regenerated_image_1785900672372.jpg';
+const productGiftShelfWrappingImg = '/images/regenerated_image_1785917724796.png';
+const productBubbleWrapImg = '/images/regenerated_image_1785919207892.jpg';
+const productStoryColouringBooksImg = '/images/regenerated_image_1785919853155.jpg';
+const productGraphBooksPapersImg = '/images/regenerated_image_1785920148351.jpg';
+const productCdDvdImg = '/images/regenerated_image_1785920363269.jpg';
 
 export const businessInfo: BusinessInfo = {
   name: 'Sri Sai Rama Stationary',
